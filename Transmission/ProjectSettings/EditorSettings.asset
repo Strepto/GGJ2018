@@ -6,8 +6,8 @@ EditorSettings:
   serializedVersion: 7
   m_ExternalVersionControlSupport: Hidden Meta Files
   m_SerializationMode: 2
-  m_LineEndingsForNewScripts: 2
-  m_DefaultBehaviorMode: 0
+  m_LineEndingsForNewScripts: 1
+  m_DefaultBehaviorMode: 1
   m_SpritePackerMode: 0
   m_SpritePackerPaddingPower: 1
   m_EtcTextureCompressorBehavior: 1
@@ -15,7 +15,7 @@ EditorSettings:
   m_EtcTextureNormalCompressor: 2
   m_EtcTextureBestCompressor: 4
   m_ProjectGenerationIncludedExtensions: txt;xml;fnt;cd;asmdef;rsp
-  m_ProjectGenerationRootNamespace: 
+  m_ProjectGenerationRootNamespace: Transmission
   m_UserGeneratedProjectSuffix: 
   m_CollabEditorSettings:
     inProgressEnabled: 1
