@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour {
         // 1
         Vector3 currentPosition = transform.position;
         // 2
-        if (Input.GetButton("w"))
+        if (Input.GetButton("Fire1"))
         {
             // 3
             Vector3 moveToward = currentPosition + Vector3.up;
