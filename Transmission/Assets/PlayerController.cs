@@ -9,6 +9,14 @@ public class PlayerController : MonoBehaviour
     private const float JoystickMovementThreshold = 0.1f;
     public float moveSpeed = 1.0f;
 
+    public enum PlayerState
+    {
+        Boy, 
+        Girl
+    }
+
+    public PlayerState CurrentPlayerState = PlayerState.Boy;
+
     private Vector3 moveDirection = Vector3.zero;
     private SimpleSpriteAnimator spriteAnimator;
 
@@ -41,16 +49,11 @@ public class PlayerController : MonoBehaviour
 
                 if (movement.x > JoystickMovementThreshold)
                 {
-                    spriteAnimator.PlayAnimation("WalkRight");
+                    spriteAnimator.PlayAnimation("WalkRight" + CurrentPlayerState);
                 }
                 else if (movement.x < -JoystickMovementThreshold)
                 {
-                    spriteAnimator.PlayAnimation("WalkLeft");
-                }
-                else
-                {
-
-                    spriteAnimator.PlayAnimation("Idle");
+                    spriteAnimator.PlayAnimation("WalkLeft" + CurrentPlayerState);
                 }
             }
             else
@@ -58,16 +61,11 @@ public class PlayerController : MonoBehaviour
                 if (movement.y > JoystickMovementThreshold)
                 {
 
-                    spriteAnimator.PlayAnimation("WalkUp");
+                    spriteAnimator.PlayAnimation("WalkUp" + CurrentPlayerState);
                 }
                 else if (movement.y < JoystickMovementThreshold)
                 {
-                    spriteAnimator.PlayAnimation("WalkDown");
-
-                }
-                else
-                {
-                    spriteAnimator.PlayAnimation("Idle");
+                    spriteAnimator.PlayAnimation("WalkDown" + CurrentPlayerState);
 
                 }
             }
@@ -78,14 +76,26 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetButton("Submit"))
         {
 
-            spriteAnimator.PlayAnimation("Interaction");
+            if(CurrentPlayerState == PlayerState.Boy)
+            {
+                CurrentPlayerState = PlayerState.Girl;
+                spriteAnimator.PlayAnimation("SwitchBoyGirl");
+            }
+            else
+            {
+                CurrentPlayerState = PlayerState.Boy;
+                spriteAnimator.PlayAnimation("SwitchGirlBoy");
+
+            }
+            
+
 
 
         }
         else
         {
 
-            spriteAnimator.PlayAnimation("Idle");
+            //spriteAnimator.PlayAnimation("Idle");
         }
 
 

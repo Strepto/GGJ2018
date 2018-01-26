@@ -1,9 +1,19 @@
 fileFormatVersion: 2
 guid: ac2218c6c20a04944ae57e35d913b741
-timeCreated: 1517002914
+timeCreated: 1517003313
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: PlayerAnimationBoy_0
+    21300002: PlayerAnimationBoy_1
+    21300004: PlayerAnimationBoy_2
+    21300006: PlayerAnimationBoy_3
+    21300008: PlayerAnimationBoy_4
+    21300010: PlayerAnimationBoy_5
+    21300012: PlayerAnimationBoy_6
+    21300014: PlayerAnimationBoy_7
+    21300016: PlayerAnimationBoy_8
+    21300018: PlayerAnimationBoy_9
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -40,13 +50,13 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -66,10 +76,245 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
-    outline: []
+    sprites:
+    - serializedVersion: 2
+      name: PlayerAnimationBoy_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 110
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlayerAnimationBoy_1
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 110
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlayerAnimationBoy_2
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 110
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlayerAnimationBoy_3
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 74
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlayerAnimationBoy_4
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 74
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlayerAnimationBoy_5
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 74
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlayerAnimationBoy_6
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 38
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlayerAnimationBoy_7
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 38
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlayerAnimationBoy_8
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlayerAnimationBoy_9
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 2
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline:
+    - - {x: -54, y: 72}
+      - {x: -54, y: -72}
+      - {x: 54, y: -72}
+      - {x: 54, y: 72}
+    - - {x: -39, y: -43}
+      - {x: -44, y: -48}
+      - {x: -44, y: -53}
+      - {x: -40, y: -64}
+      - {x: -33, y: -64}
+      - {x: -29, y: -62}
+      - {x: -28, y: -53}
+      - {x: -28, y: -47}
+      - {x: -33, y: -43}
+    - - {x: -3, y: -43}
+      - {x: -8, y: -46}
+      - {x: -8, y: -62}
+      - {x: -7, y: -64}
+      - {x: 4, y: -64}
+      - {x: 8, y: -63}
+      - {x: 8, y: -47}
+      - {x: 3, y: -43}
+    - - {x: -39, y: -7}
+      - {x: -44, y: -10}
+      - {x: -44, y: -21}
+      - {x: -43, y: -27}
+      - {x: -39, y: -28}
+      - {x: -31, y: -28}
+      - {x: -28, y: -23}
+      - {x: -28, y: -9}
+      - {x: -29, y: -7}
+    - - {x: -6, y: -7}
+      - {x: -8, y: -9}
+      - {x: -8, y: -26}
+      - {x: -6, y: -28}
+      - {x: 5, y: -28}
+      - {x: 8, y: -26}
+      - {x: 8, y: -9}
+      - {x: 4, y: -7}
+    - - {x: -39, y: 29}
+      - {x: -44, y: 27}
+      - {x: -44, y: 13}
+      - {x: -40, y: 8}
+      - {x: -31, y: 8}
+      - {x: -28, y: 13}
+      - {x: -28, y: 24}
+      - {x: -30, y: 29}
+    - - {x: -6, y: 29}
+      - {x: -8, y: 27}
+      - {x: -8, y: 12}
+      - {x: -3, y: 8}
+      - {x: 4, y: 9}
+      - {x: 8, y: 14}
+      - {x: 8, y: 27}
+      - {x: 4, y: 29}
+    - - {x: 41, y: 29}
+      - {x: 33, y: 29}
+      - {x: 28, y: 28}
+      - {x: 28, y: 10}
+      - {x: 36, y: 8}
+      - {x: 40, y: 8}
+      - {x: 44, y: 13}
+      - {x: 44, y: 24}
+    - - {x: -6, y: 65}
+      - {x: -8, y: 62}
+      - {x: -8, y: 51}
+      - {x: -7, y: 45}
+      - {x: -5, y: 43}
+      - {x: 3, y: 43}
+      - {x: 8, y: 49}
+      - {x: 8, y: 63}
+      - {x: 4, y: 65}
+    - - {x: 28, y: 65}
+      - {x: 28, y: 49}
+      - {x: 30, y: 43}
+      - {x: 41, y: 43}
+      - {x: 44, y: 44}
+      - {x: 44, y: 63}
+      - {x: 42, y: 65}
+    - - {x: -41, y: 65}
+      - {x: -44, y: 64}
+      - {x: -44, y: 48}
+      - {x: -43, y: 44}
+      - {x: -28, y: 44}
+      - {x: -28, y: 62}
+      - {x: -30, y: 65}
     physicsShape: []
   spritePackingTag: 
   userData: 
