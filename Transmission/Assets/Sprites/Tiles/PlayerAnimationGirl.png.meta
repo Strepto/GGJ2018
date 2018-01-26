@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 546ed52554ea2a14692bd01c1ba58311
-timeCreated: 1516998880
+timeCreated: 1517001303
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -8,6 +8,12 @@ TextureImporter:
     21300002: PlayerAnimationGirl_1
     21300004: PlayerAnimationGirl_2
     21300006: PlayerAnimationGirl_3
+    21300008: PlayerAnimationGirl_4
+    21300010: PlayerAnimationGirl_5
+    21300012: PlayerAnimationGirl_6
+    21300014: PlayerAnimationGirl_7
+    21300016: PlayerAnimationGirl_8
+    21300018: PlayerAnimationGirl_9
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -64,8 +70,8 @@ TextureImporter:
     maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
-    compressionQuality: 50
+    textureCompression: 0
+    compressionQuality: 0
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
@@ -117,6 +123,104 @@ TextureImporter:
         serializedVersion: 2
         x: 74
         y: 110
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlayerAnimationGirl_3
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 74
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlayerAnimationGirl_4
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 74
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlayerAnimationGirl_5
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 74
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlayerAnimationGirl_6
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 38
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlayerAnimationGirl_7
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 38
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlayerAnimationGirl_8
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlayerAnimationGirl_9
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 2
         width: 32
         height: 32
       alignment: 0
