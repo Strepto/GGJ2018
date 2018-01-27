@@ -57,6 +57,11 @@ public class DialogWindow : Singleton<DialogWindow> {
         writeNpcMessage(currentHandler.getTextAndSendReply(replyNr));
     }
 
+    public void updateTextOptions()
+    {
+
+    }
+
     public void endDialog()
     {
         ActiveDialog = false;
