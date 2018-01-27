@@ -50,14 +50,18 @@ public class NpcBehaviourScript : MonoBehaviour {
         movement.MoveToPosition(point, speed, callback:HasMovedToPoint);
     }
 
-    void HasMovedToPoint(bool hasReached, float timeUsed)
+    void HasMovedToPoint(bool interrupted, float timeUsed)
     {
-        pointInList++;
-        if (pointInList >= pointList.Length)
+        if (!interrupted)
         {
-            pointInList = 0;
+            pointInList++;
+            if (pointInList >= pointList.Length)
+            {
+                pointInList = 0;
+            }
+
+            MoveToPoint(pointList[pointInList]);
         }
 
-        MoveToPoint(pointList[pointInList]);
     }
 }

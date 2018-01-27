@@ -15,6 +15,15 @@ namespace Transmission
         Action<bool, float> localCallback;
         Action<bool, float> callbackToCall;
 
+        public enum MovementState
+        {
+            Idle,
+            Stopped,
+            Moving
+        }
+
+        public MovementState CurrentMovementState { get; private set; }
+
         float timeStartedMoving = 0f;
         bool hasFinishedMoving = false;
         float moveSpeed = 1.0f;
@@ -22,37 +31,52 @@ namespace Transmission
         private SimpleSpriteAnimator spriteAnimator;
         private PlayerController playerController;
 
+        private Coroutine currentCallbackCoroutine;
+
         public void Start()
         {
+            CurrentMovementState = MovementState.Idle;
             this.spriteAnimator = GetComponent<SimpleSpriteAnimator>();
 
             this.playerController = GetComponent<PlayerController>();
-            
         }
 
         public void MoveToPosition(Vector2 targetPos, float speed = 2.0f, bool collide = true, Action<bool, float> callback = null )
         {
+            CurrentMovementState = CurrentMovementState = MovementState.Moving;
             CurrentTarget = targetPos;
-            localCallback += callback;
-            callbackToCall = callback;
+            if(callback != null)
+            {
+                localCallback = callback;
+                callbackToCall = callback;
+            }
             hasFinishedMoving = false;
             timeStartedMoving = Time.deltaTime;
             moveSpeed = speed;
+            if(currentCallbackCoroutine != null)
+            {
+                StopCoroutine(currentCallbackCoroutine);
+            }
+
+            currentCallbackCoroutine = StartCoroutine(CallbackCoroutine(callback));        }
+
+        public IEnumerator CallbackCoroutine (Action<bool, float> callback)
+        {
+            while (!hasFinishedMoving)
+            {
+                yield return null;
+            }
+            if(callback != null)
+            {
+                bool status = CurrentMovementState == MovementState.Stopped;
+                callback(status, Time.deltaTime - timeStartedMoving);
+            }
+            CurrentMovementState = MovementState.Idle;
         }
 
         public void Stop()
         {
-            if (!hasFinishedMoving)
-            {
-                hasFinishedMoving = true;
-
-                if (localCallback != null)
-                {
-                    localCallback(true, Time.deltaTime - timeStartedMoving);
-                    localCallback -= callbackToCall;
-                }
-                callbackToCall = null;
-            }
+            CurrentMovementState = MovementState.Stopped;
             hasFinishedMoving = true;
             CurrentTarget = transform.position;
         }
@@ -67,13 +91,6 @@ namespace Transmission
             else if (!hasFinishedMoving)
             {
                 hasFinishedMoving = true;
-
-                if (localCallback != null)
-                {
-                    localCallback(true, Time.deltaTime - timeStartedMoving);
-                    localCallback -= callbackToCall;
-                }
-                callbackToCall = null;
             }
 
             AnimateMovement(position);
