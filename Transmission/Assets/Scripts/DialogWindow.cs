@@ -34,6 +34,7 @@ public class DialogWindow : Singleton<DialogWindow> {
         {
             hasStartedDialog = true;
             initiateDialog(initialText);
+            Debug.Log("init");
         }
     }
 
