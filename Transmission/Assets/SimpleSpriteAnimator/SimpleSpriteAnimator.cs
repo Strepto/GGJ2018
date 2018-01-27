@@ -58,16 +58,16 @@ namespace SeedValue
 		public void PlayAnimation (string _name)
 		{
 			if (m_AllAnimations.ContainsKey (_name)) {
-			
-//
-//				if (m_CurrentPlaing == m_AllAnimations [_name]) {
-//				//same animation
-//					return;
-//				}
+
+                if (m_CurrentPlaing == m_AllAnimations[_name])
+                {
+                    //same animation
+                    return;
+                }
 
 
-				//HideAllAnimations ();
-				m_AllAnimations [_name].gameObject.SetActive (true);
+                //HideAllAnimations ();
+                m_AllAnimations [_name].gameObject.SetActive (true);
 				m_AllAnimations [_name].Play ();
 
 
