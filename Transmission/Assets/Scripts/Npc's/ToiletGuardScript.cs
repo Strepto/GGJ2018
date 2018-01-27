@@ -64,9 +64,9 @@ public class ToiletGuardScript : NpcBrain {
                     case 1:
                         return "Why not?";
                     case 0:
-                        return "Why not?";
+                        return "";
                     case 2:
-                        return "Why not?";
+                        return "";
                     default:
                         return "error";
                 }

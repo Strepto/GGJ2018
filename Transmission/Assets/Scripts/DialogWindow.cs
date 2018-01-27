@@ -70,9 +70,36 @@ public class DialogWindow : Singleton<DialogWindow> {
 
     public void updateTextOptions()
     {
-        firstChoiceText.GetComponent<Text>().text = currentHandler.getChoiceText(0);
-        secondChoiceText.GetComponent<Text>().text = currentHandler.getChoiceText(1);
-        thirdChoiceText.GetComponent<Text>().text = currentHandler.getChoiceText(2);
+        string text1 = currentHandler.getChoiceText(0);
+        if (text1 == "")
+        {
+            firstChoiceText.GetComponentInParent<Button>().interactable = false;
+        }
+        else
+        {
+            firstChoiceText.GetComponentInParent<Button>().interactable = true;
+        }
+        firstChoiceText.GetComponent<Text>().text = text1;
+        string text2 = currentHandler.getChoiceText(1);
+        if (text1 == "")
+        {
+            secondChoiceText.GetComponentInParent<Button>().interactable = false;
+        }
+        else
+        {
+            secondChoiceText.GetComponentInParent<Button>().interactable = true;
+        }
+        secondChoiceText.GetComponent<Text>().text = text2;
+        string text3 = currentHandler.getChoiceText(2);
+        if (text1 == "")
+        {
+            thirdChoiceText.GetComponentInParent<Button>().interactable = false;
+        }
+        else
+        {
+            thirdChoiceText.GetComponentInParent<Button>().interactable = true;
+        }
+        thirdChoiceText.GetComponent<Text>().text = text3;
     }
 
     public void endDialog()
