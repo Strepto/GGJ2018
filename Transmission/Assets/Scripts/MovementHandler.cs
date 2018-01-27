@@ -10,8 +10,12 @@ namespace Transmission
     public class MovementHandler : MonoBehaviour
     {
         private const float JoystickMovementThreshold = 0.1f;
-        
+
         public Vector2 CurrentTarget { get; private set; }
+
+        public Vector2 CurrentDirection { get; private set; }
+
+
         Action<bool, float> localCallback;
         Action<bool, float> callbackToCall;
 
@@ -41,11 +45,11 @@ namespace Transmission
             this.playerController = GetComponent<PlayerController>();
         }
 
-        public void MoveToPosition(Vector2 targetPos, float speed = 2.0f, bool collide = true, Action<bool, float> callback = null )
+        public void MoveToPosition(Vector2 targetPos, float speed = 2.0f, bool collide = true, Action<bool, float> callback = null)
         {
             CurrentMovementState = CurrentMovementState = MovementState.Moving;
             CurrentTarget = targetPos;
-            if(callback != null)
+            if (callback != null)
             {
                 localCallback = callback;
                 callbackToCall = callback;
@@ -53,20 +57,21 @@ namespace Transmission
             hasFinishedMoving = false;
             timeStartedMoving = Time.deltaTime;
             moveSpeed = speed;
-            if(currentCallbackCoroutine != null)
+            if (currentCallbackCoroutine != null)
             {
                 StopCoroutine(currentCallbackCoroutine);
             }
 
-            currentCallbackCoroutine = StartCoroutine(CallbackCoroutine(callback));        }
+            currentCallbackCoroutine = StartCoroutine(CallbackCoroutine(callback));
+        }
 
-        public IEnumerator CallbackCoroutine (Action<bool, float> callback)
+        public IEnumerator CallbackCoroutine(Action<bool, float> callback)
         {
             while (!hasFinishedMoving)
             {
                 yield return null;
             }
-            if(callback != null)
+            if (callback != null)
             {
                 bool status = CurrentMovementState == MovementState.Stopped;
                 callback(status, Time.deltaTime - timeStartedMoving);
@@ -80,7 +85,7 @@ namespace Transmission
             hasFinishedMoving = true;
             CurrentTarget = transform.position;
         }
-        
+
         void Update()
         {
             Vector3 position = transform.position;
@@ -110,7 +115,7 @@ namespace Transmission
             moveDirection.Normalize();
 
             var movement = new Vector2(moveDirection.x, moveDirection.y);
-            if(movement.magnitude > 0.1f)
+            if (movement.magnitude > 0.1f)
             {
 
                 if (Mathf.Abs(movement.x) > Mathf.Abs(movement.y))
@@ -118,10 +123,12 @@ namespace Transmission
 
                     if (movement.x > JoystickMovementThreshold)
                     {
+                        CurrentDirection = Vector2.right;
                         spriteAnimator.PlayAnimation("WalkRight" + animExtension);
                     }
                     else if (movement.x < -JoystickMovementThreshold)
                     {
+                        CurrentDirection = Vector2.left;
                         spriteAnimator.PlayAnimation("WalkLeft" + animExtension);
                     }
                 }
@@ -130,10 +137,12 @@ namespace Transmission
                     if (movement.y > JoystickMovementThreshold)
                     {
 
+                        CurrentDirection = Vector2.up;
                         spriteAnimator.PlayAnimation("WalkUp" + animExtension);
                     }
                     else if (movement.y < JoystickMovementThreshold)
                     {
+                        CurrentDirection = Vector2.down;
                         spriteAnimator.PlayAnimation("WalkDown" + animExtension);
 
                     }
@@ -144,7 +153,7 @@ namespace Transmission
 
                 spriteAnimator.PlayAnimation("Idle" + animExtension);
             }
-            
+
         }
     }
 }

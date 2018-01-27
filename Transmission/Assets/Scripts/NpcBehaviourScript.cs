@@ -22,6 +22,11 @@ public class NpcBehaviourScript : MonoBehaviour {
 		
 	}
 
+    public void PlayerInitiatedDialog()
+    {
+        dialog.StartDialog();
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))

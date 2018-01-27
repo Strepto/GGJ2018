@@ -10,7 +10,7 @@ namespace Transmission
     {
         private const float JoystickMovementThreshold = 0.1f;
         public float moveSpeed = 2.0f;
-
+        public InteractionZoneController interactionZoneController;
 
         public enum PlayerState
         {
@@ -45,10 +45,10 @@ namespace Transmission
             float movementX = Input.GetAxis("Horizontal");
             float movementY = Input.GetAxis("Vertical");
             var movement = new Vector2(movementX, movementY);
+            Vector3 moveToward = currentPosition + new Vector3(movement.x, movement.y);
             if (movement.magnitude > JoystickMovementThreshold)
             {
                 // 3
-                Vector3 moveToward = currentPosition + new Vector3(movement.x, movement.y);
                 // 4
                 moveDirection = moveToward - currentPosition;
                 moveDirection.z = 0;
@@ -71,6 +71,19 @@ namespace Transmission
                     spriteAnimator.PlayAnimation("SwitchGirlBoy");
                 }
             }
+            else if (Input.GetButton("Jump"))
+            {
+                var result = Physics2D.BoxCast(currentPosition, Vector2.one, 0f, movementHandler.CurrentDirection, 0.5f, LayerMask.GetMask("Interactables"));    
+                if(result)
+                {
+                    var isNpc = result.collider.gameObject.GetComponent<NpcBehaviourScript>();
+                    if(isNpc != null)
+                    {
+                        isNpc.PlayerInitiatedDialog();
+                    }
+                }
+            }
+            
         }
     }
 
