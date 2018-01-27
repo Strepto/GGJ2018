@@ -16,19 +16,15 @@ public class DialogWindow : Singleton<DialogWindow> {
     public GameObject playerTextPrefab;
     public GameObject textPanel;
 
-    public Button firstChoice;
-    public Button secondChoice;
-    public Button thirdChoice;
+    public Text firstChoiceText;
+    public Text secondChoiceText;
+    public Text thirdChoiceText;
 
     private bool hasStartedDialog;
 
     void Start () {
         hasStartedDialog = false;
     }
-	
-	void Update () {
-		
-	}
 
     public void startDialog(DialogHandler handler, string initialText)
     {
@@ -53,25 +49,41 @@ public class DialogWindow : Singleton<DialogWindow> {
         }
 
         writeNpcMessage(text);
+        updateTextOptions();
     }
 
     public void sendReply(int replyNr)
     {
-        writeNpcMessage(currentHandler.getTextAndSendReply(replyNr));
+        writePlayerMessage(currentHandler.getChoiceText(replyNr));
+        string text = currentHandler.getTextAndSendReply(replyNr);
+        if (text == "endDialog()")
+        {
+            currentHandler.endDialog();
+        }
+        else
+        {
+            writeNpcMessage(text);
+            updateTextOptions();
+        }
     }
 
     public void updateTextOptions()
     {
-        firstChoice.GetComponent<Text>().text = currentHandler.getChoiceText(0);
-        secondChoice.GetComponent<Text>().text = currentHandler.getChoiceText(1);
-        thirdChoice.GetComponent<Text>().text = currentHandler.getChoiceText(2);
+        firstChoiceText.GetComponent<Text>().text = currentHandler.getChoiceText(0);
+        secondChoiceText.GetComponent<Text>().text = currentHandler.getChoiceText(1);
+        thirdChoiceText.GetComponent<Text>().text = currentHandler.getChoiceText(2);
     }
 
     public void endDialog()
     {
         ActiveDialog = false;
         hasStartedDialog = false;
-        currentHandler.EndDialog();
+        int i = 0;
+        while(textPanel.transform.childCount > 0 && i < 200)
+        {
+            DestroyImmediate(textPanel.transform.GetChild(0).gameObject);
+            i++;
+        }
     }
 
     public void writeNpcMessage(string text)

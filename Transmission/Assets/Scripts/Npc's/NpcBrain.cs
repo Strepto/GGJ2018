@@ -7,11 +7,11 @@ public class NpcBrain : MonoBehaviour {
 
     public DialogHandler dialog;
 
-    private int state;
+    protected int stateNumber;
 
     private void Start()
     {
-        state = 0;
+        stateNumber = 0;
     }
 
     public virtual string getInitialText()
