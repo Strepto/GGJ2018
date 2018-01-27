@@ -12,7 +12,6 @@ public class NeedsPurseScript : NpcBrain
     {
         base.Start();
         speed = 1;
-        movement.SetFacingDirection(Vector2.up, false);
     }
 
     public override string getInitialText()
