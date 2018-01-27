@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Transmission;
 using UnityEngine;
 
 public class NpcBehaviourScript : MonoBehaviour {
@@ -9,17 +10,20 @@ public class NpcBehaviourScript : MonoBehaviour {
 
     public Vector2[] pointList;
     private int pointInList = 0;
+    public float speed;
     public Collider2D triggerCollider;
     
-    void Start () {
-
+    void Start ()
+    {
+        MoveToPoint(pointList[pointInList]);
     }
 
-	void Update () {
+	void Update ()
+    {
 		
 	}
 
-    private void OnTriggerEnter2D(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
@@ -28,7 +32,7 @@ public class NpcBehaviourScript : MonoBehaviour {
         }
     }
 
-    private void OnTriggerExit2D(Collider other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
@@ -38,18 +42,18 @@ public class NpcBehaviourScript : MonoBehaviour {
 
     void Stop()
     {
-        movement.Stop();
+        //movement.Stop();
     }
 
     void MoveToPoint(Vector2 point)
     {
-        movement.moveToPoint(point, HasMovedToPoint);
+        movement.MoveToPosition(point, speed, callback:HasMovedToPoint);
     }
 
-    void HasMovedToPoint()
+    void HasMovedToPoint(bool hasReached, float timeUsed)
     {
         pointInList++;
-        if (pointInList > pointList.Length)
+        if (pointInList >= pointList.Length)
         {
             pointInList = 0;
         }
