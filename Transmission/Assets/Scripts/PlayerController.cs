@@ -12,6 +12,8 @@ namespace Transmission
         public float moveSpeed = 2.0f;
         public InteractionZoneController interactionZoneController;
 
+        public List<PickupItem> playerItems = new List<PickupItem>();
+
         public enum PlayerState
         {
             Boy,
@@ -36,7 +38,7 @@ namespace Transmission
 
             if (DialogWindow.Instance.ActiveDialog)
             {
-                // No movement during active dialog.
+                // No player interaction during active dialog.
                 return;
             }
 
@@ -58,7 +60,7 @@ namespace Transmission
                 movementHandler.MoveToPosition(target, moveSpeed);
                 //transform.position = Vector3.Lerp(currentPosition, target, Time.deltaTime);
             }
-            else if (Input.GetButton("Submit"))
+            else if (Input.GetButtonDown("Submit"))
             {
                 if (CurrentPlayerState == PlayerState.Boy)
                 {
@@ -71,7 +73,7 @@ namespace Transmission
                     spriteAnimator.PlayAnimation("SwitchGirlBoy");
                 }
             }
-            else if (Input.GetButton("Jump"))
+            else if (Input.GetButtonDown("Jump") )
             {
                 var result = Physics2D.BoxCast(currentPosition, Vector2.one, 0f, movementHandler.CurrentDirection, 0.5f, LayerMask.GetMask("Interactables"));    
                 if(result)
@@ -80,6 +82,13 @@ namespace Transmission
                     if(isNpc != null)
                     {
                         isNpc.PlayerInitiatedDialog();
+                    }
+
+                    var isPickupItem = result.collider.gameObject.GetComponent<PickupItem>();
+                    if (isPickupItem != null)
+                    {
+                        isPickupItem.PrepareForPickup();
+                        playerItems.Add(isPickupItem);
                     }
                 }
             }
