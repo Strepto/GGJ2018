@@ -4432,9 +4432,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1674790849}
   - component: {fileID: 1674790848}
+  - component: {fileID: 1674790851}
   - component: {fileID: 1674790847}
   - component: {fileID: 1674790846}
   - component: {fileID: 1674790850}
+  - component: {fileID: 1674790853}
+  - component: {fileID: 1674790852}
   m_Layer: 0
   m_Name: ToiletGuard
   m_TagString: Player
@@ -4524,9 +4527,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 456fc4b306fb5974a9eb0595d7306449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movement: {fileID: 1674790852}
+  dialog: {fileID: 1674790853}
   pointList:
+  - {x: 3, y: 3}
   - {x: 3, y: 0}
-  - {x: 3, y: 2}
+  speed: 0
+  triggerCollider: {fileID: 0}
+--- !u!61 &1674790851
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1674790845}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -1}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2}
+  m_EdgeRadius: 0
+--- !u!114 &1674790852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1674790845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4af0387e76367b540be9ba2e44aad24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1674790853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1674790845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ede4e4c80741742b7040a1e7bf01c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviour: {fileID: 1674790850}
 --- !u!1 &1709809974
 GameObject:
   m_ObjectHideFlags: 0
