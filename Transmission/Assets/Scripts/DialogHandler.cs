@@ -30,4 +30,6 @@ public class DialogHandler : MonoBehaviour {
     {
         dialogPanel.SetActive(false);
     }
+
+
 }
