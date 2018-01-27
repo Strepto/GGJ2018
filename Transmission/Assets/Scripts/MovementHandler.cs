@@ -94,7 +94,7 @@ namespace Transmission
             Vector3 position = transform.position;
             if (!hasFinishedMoving && Vector3.Distance(transform.position, CurrentTarget) > 0.1f)
             {
-                this.transform.position = Vector3.MoveTowards(transform.position, CurrentTarget, 0.05f * moveSpeed) ;
+                this.transform.position = Vector3.MoveTowards(transform.position, CurrentTarget, 0.05f * moveSpeed);
             }
             else if (!hasFinishedMoving)
             {
@@ -106,7 +106,7 @@ namespace Transmission
 
         private Vector2 GetDirectionSimple(Vector2 from, Vector2 to)
         {
-            var movement =  to - from;
+            var movement = to - from;
 
             if (Mathf.Abs(movement.x) > Mathf.Abs(movement.y))
             {
@@ -143,14 +143,14 @@ namespace Transmission
 
             var moveDirection = new Vector3(CurrentTarget.x, CurrentTarget.y) - position;
             moveDirection.z = 0;
-            if (moveDirection.magnitude < 0.04f)
+            moveDirection.Normalize();
+            if (Vector2.Distance(CurrentTarget, position) < 0.1f)
             {
-                moveDirection.Normalize();
-                SetFacingDirection(moveDirection, true);
+                SetFacingDirection(moveDirection, false);
             }
             else
             {
-                SetFacingDirection(moveDirection, false);
+                SetFacingDirection(moveDirection, true);
             }
 
 
@@ -165,46 +165,40 @@ namespace Transmission
             {
                 animExtension = playerController.CurrentPlayerState.ToString();
             }
-            if (direction.magnitude > 0.1f)
+            if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
             {
 
-                if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+                if (direction.x > JoystickMovementThreshold)
                 {
+                    CurrentDirection = Vector2.right;
+                    spriteAnimator.PlayAnimation("WalkRight" + animExtension, !isMoving);
 
-                    if (direction.x > JoystickMovementThreshold)
-                    {
-                        CurrentDirection = Vector2.right;
-                        if (isMoving)
-                        {
-                            spriteAnimator.PlayAnimation("WalkRight" + animExtension);
-                        }
-                    }
-                    else if (direction.x < -JoystickMovementThreshold)
-                    {
-                        CurrentDirection = Vector2.left;
-                        spriteAnimator.PlayAnimation("WalkLeft" + animExtension);
-                    }
                 }
-                else
+                else if (direction.x < -JoystickMovementThreshold)
                 {
-                    if (direction.y > JoystickMovementThreshold)
-                    {
-
-                        CurrentDirection = Vector2.up;
-                        spriteAnimator.PlayAnimation("WalkUp" + animExtension);
-                    }
-                    else if (direction.y < JoystickMovementThreshold)
-                    {
-                        CurrentDirection = Vector2.down;
-                        spriteAnimator.PlayAnimation("WalkDown" + animExtension);
-
-                    }
+                    CurrentDirection = Vector2.left;
+                    spriteAnimator.PlayAnimation("WalkLeft" + animExtension, !isMoving);
                 }
             }
             else
             {
-                spriteAnimator.PlayAnimation("Idle" + animExtension);
+                if (direction.y > JoystickMovementThreshold)
+                {
+
+                    CurrentDirection = Vector2.up;
+                    spriteAnimator.PlayAnimation("WalkUp" + animExtension, !isMoving);
+                }
+                else if (direction.y < JoystickMovementThreshold)
+                {
+                    CurrentDirection = Vector2.down;
+                    spriteAnimator.PlayAnimation("WalkDown" + animExtension, !isMoving);
+
+                }
             }
+            //else
+            //{
+            //    spriteAnimator.PlayAnimation("Idle" + animExtension);
+            //}
 
         }
     }
