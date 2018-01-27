@@ -12,7 +12,7 @@ public class NpcBrain : MonoBehaviour {
 
     public Vector2[] pointList;
     protected int pointInList = 0;
-    public float speed;
+    public float speed = 1;
 
     void Start()
     {
