@@ -10,10 +10,10 @@ public class DialogWindow : MonoBehaviour {
     public Image playerImage;
     public PlayerController player;
 
-    public Image[] playerPortraits;
+    public Sprite[] playerPortraits;
 
     void Start () {
-
+        
     }
 	
 	void Update () {
@@ -23,14 +23,13 @@ public class DialogWindow : MonoBehaviour {
     public void startDialog(DialogHandler handler)
     {
         currentHandler = handler;
-        playerImage = playerPortraits[1];
         if (player.CurrentPlayerState == PlayerController.PlayerState.Boy)
         {
-            playerImage = playerPortraits[1];
+            playerImage.sprite = playerPortraits[0];
         }
         else
         {
-            playerImage = playerPortraits[1];
+            playerImage.sprite = playerPortraits[1];
         }
     }
 
