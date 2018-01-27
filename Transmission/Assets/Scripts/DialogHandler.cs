@@ -7,6 +7,8 @@ public class DialogHandler : MonoBehaviour {
 
     public NpcBehaviourScript behaviour;
 
+    public GameObject dialogPanel;
+
 	void Start () {
 		
 	}
@@ -17,6 +19,11 @@ public class DialogHandler : MonoBehaviour {
 
     public void StartDialog()
     {
-        Debug.Log("Dialog!!");
+        dialogPanel.SetActive(true);
+    }
+
+    public void EndDialog()
+    {
+        dialogPanel.SetActive(false);
     }
 }
