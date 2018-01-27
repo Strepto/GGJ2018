@@ -39,4 +39,9 @@ public class DialogHandler : MonoBehaviour {
         return brain.getTextAndSendReply(choice);
     }
 
+    public string getChoiceText(int choiceNr)
+    {
+        return false;
+    }
+
 }

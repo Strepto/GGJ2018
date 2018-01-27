@@ -17,6 +17,10 @@ public class DialogWindow : Singleton<DialogWindow> {
     public GameObject playerTextPrefab;
     public GameObject textPanel;
 
+    public Button firstChoice;
+    public Button secondChoice;
+    public Button thirdChoice;
+
     private bool hasStartedDialog;
 
     void Start () {
@@ -59,7 +63,9 @@ public class DialogWindow : Singleton<DialogWindow> {
 
     public void updateTextOptions()
     {
-
+        firstChoice.GetComponent<Text>().text = currentHandler.getChoiceText(0);
+        secondChoice.GetComponent<Text>().text = currentHandler.getChoiceText(1);
+        thirdChoice.GetComponent<Text>().text = currentHandler.getChoiceText(2);
     }
 
     public void endDialog()
