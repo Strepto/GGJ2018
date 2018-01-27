@@ -17,9 +17,6 @@ public class DialogWindow : Singleton<DialogWindow> {
         ActiveDialog = false;
     }
 	
-	void Update () {
-		
-	}
 
     public void startDialog(DialogHandler handler)
     {
