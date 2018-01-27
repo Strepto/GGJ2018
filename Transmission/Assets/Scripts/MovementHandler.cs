@@ -29,7 +29,7 @@ namespace Transmission
         public MovementState CurrentMovementState { get; private set; }
 
         float timeStartedMoving = 0f;
-        bool hasFinishedMoving = false;
+        bool hasFinishedMoving = true;
         float moveSpeed = 1.0f;
 
         private SimpleSpriteAnimator spriteAnimator;
