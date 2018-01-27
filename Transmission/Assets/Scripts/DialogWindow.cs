@@ -9,11 +9,12 @@ public class DialogWindow : MonoBehaviour {
     private DialogHandler currentHandler;
     public Image playerImage;
     public PlayerController player;
+    public bool activeDialog { get; private set; }
 
     public Sprite[] playerPortraits;
 
     void Start () {
-        
+        activeDialog = false;
     }
 	
 	void Update () {
@@ -23,6 +24,8 @@ public class DialogWindow : MonoBehaviour {
     public void startDialog(DialogHandler handler)
     {
         currentHandler = handler;
+        activeDialog = true;
+
         if (player.CurrentPlayerState == PlayerController.PlayerState.Boy)
         {
             playerImage.sprite = playerPortraits[0];
@@ -31,6 +34,11 @@ public class DialogWindow : MonoBehaviour {
         {
             playerImage.sprite = playerPortraits[1];
         }
+    }
+
+    public void endDialog()
+    {
+        activeDialog = false;
     }
 
     public void writeNpcMessage(string text)
