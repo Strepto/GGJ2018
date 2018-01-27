@@ -2961,6 +2961,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2.02
+  interactionZoneController: {fileID: 0}
   CurrentPlayerState: 0
 --- !u!114 &708893875
 MonoBehaviour:
@@ -5829,6 +5830,7 @@ GameObject:
   - component: {fileID: 1674790850}
   - component: {fileID: 1674790853}
   - component: {fileID: 1674790852}
+  - component: {fileID: 1674790854}
   m_Layer: 0
   m_Name: ToiletGuard
   m_TagString: Player
@@ -5972,6 +5974,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogPanel: {fileID: 1224108242}
+--- !u!114 &1674790854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1674790845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1125fd8e195eff34e9930632667ea1b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textOptions:
+  - You cannot pass here!
+  - You're free to enter.
+  - Because this is a girls-only bathroom of course!
+  - Stop wasting my time, shoo!
+  playerTextOptions:
+  - Why not?
+  - But I really have to go!
+  - C'mon man!
+  - What if I give you 100$
+  numberOfTextOptions: 0
+  numberOfPlayerTextOptions: 0
 --- !u!1 &1709809974
 GameObject:
   m_ObjectHideFlags: 0
