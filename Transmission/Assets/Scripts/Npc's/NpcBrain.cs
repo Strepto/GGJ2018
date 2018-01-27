@@ -11,13 +11,9 @@ public class NpcBrain : MonoBehaviour {
     public MovementHandler movement;
     public DialogHandler dialog;
 
-    public Vector2 basePosition;
-    public Vector2 blockLadiesRoom;
-    public Vector2 blockMensRoom;
 
     protected virtual void Start()
     {
-        MoveToPoint(basePosition);
         stateNumber = 0;
     }
 

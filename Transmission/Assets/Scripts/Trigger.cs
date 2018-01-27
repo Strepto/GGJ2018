@@ -17,7 +17,7 @@ public class Trigger : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(onTriggerEnter != null)
+        if(onTriggerEnter != null && collision.CompareTag("Player"))
         {
             onTriggerEnter(this);
         }
@@ -25,7 +25,7 @@ public class Trigger : MonoBehaviour {
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (onTriggerExit != null)
+        if (onTriggerExit != null && collision.CompareTag("Player"))
         {
             onTriggerExit(this);
         }
