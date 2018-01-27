@@ -4,15 +4,13 @@ using Transmission;
 using UnityEngine;
 
 public class DialogHandler : MonoBehaviour {
-
-    private NpcBehaviourScript behaviour;
+    
     private NpcBrain brain;
 
     public GameObject dialogPanel;
 
 
 	void Start () {
-        behaviour = GetComponent<NpcBehaviourScript>();
         brain = GetComponent<NpcBrain>();
     }
 

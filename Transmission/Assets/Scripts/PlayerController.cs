@@ -117,7 +117,7 @@ namespace Transmission
                 var result = Physics2D.BoxCast(currentPosition, Vector2.one, 0f, movementHandler.CurrentDirection, 0.5f, LayerMask.GetMask("Interactables"));    
                 if(result)
                 {
-                    var isNpc = result.collider.gameObject.GetComponent<NpcBehaviourScript>();
+                    var isNpc = result.collider.gameObject.GetComponent<NpcBrain>();
                     if(isNpc != null)
                     {
                         isNpc.PlayerInitiatedDialog();
