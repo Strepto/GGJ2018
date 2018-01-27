@@ -11,7 +11,6 @@ public class NpcBehaviourScript : MonoBehaviour {
     public Vector2[] pointList;
     private int pointInList = 0;
     public float speed;
-    public Collider2D triggerCollider;
     
     void Start ()
     {

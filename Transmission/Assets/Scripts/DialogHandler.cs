@@ -5,13 +5,16 @@ using UnityEngine;
 
 public class DialogHandler : MonoBehaviour {
 
-    public NpcBehaviourScript behaviour;
+    private NpcBehaviourScript behaviour;
 
     public GameObject dialogPanel;
 
+    private DialogWindow dialogWindow;
+
 	void Start () {
-		
-	}
+        dialogWindow = dialogPanel.GetComponent<DialogWindow>();
+        behaviour = GetComponent<NpcBehaviourScript>();
+    }
 
 	void Update () {
 		
@@ -20,6 +23,7 @@ public class DialogHandler : MonoBehaviour {
     public void StartDialog()
     {
         dialogPanel.SetActive(true);
+        dialogWindow.startDialog(this);
     }
 
     public void EndDialog()
