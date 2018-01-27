@@ -1109,7 +1109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 309963594}
   - component: {fileID: 309963595}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WalkLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1424,7 +1424,7 @@ GameObject:
   - component: {fileID: 412706684}
   - component: {fileID: 412706686}
   - component: {fileID: 412706685}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WalkUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1822,7 +1822,7 @@ GameObject:
   m_Component:
   - component: {fileID: 538525927}
   - component: {fileID: 538525928}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WalkDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3162,7 +3162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 746390844}
   - component: {fileID: 746390845}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WalkRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3214,7 +3214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 779941154}
   - component: {fileID: 779941155}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ToiletGuardAnimation_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3801,7 +3801,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1009863762}
   - component: {fileID: 1009863763}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ToiletGuardAnimation_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4020,7 +4020,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1099474115}
   - component: {fileID: 1099474116}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ToiletGuardAnimation_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5254,7 +5254,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1502483960}
   - component: {fileID: 1502483961}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ToiletGuardAnimation_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5327,7 +5327,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1529375976}
   - component: {fileID: 1529375977}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ToiletGuardAnimation_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5400,7 +5400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1533380858}
   - component: {fileID: 1533380859}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ToiletGuardAnimation_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5473,7 +5473,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1588934170}
   - component: {fileID: 1588934171}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ToiletGuardAnimation_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5831,7 +5831,7 @@ GameObject:
   - component: {fileID: 1674790853}
   - component: {fileID: 1674790852}
   - component: {fileID: 1674790854}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ToiletGuard
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -6575,7 +6575,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1928141567}
   - component: {fileID: 1928141568}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ToiletGuardAnimation_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6648,7 +6648,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1929494559}
   - component: {fileID: 1929494560}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ToiletGuardAnimation_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6783,7 +6783,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1999361033}
   - component: {fileID: 1999361034}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Idle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
