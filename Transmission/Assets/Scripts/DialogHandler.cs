@@ -41,7 +41,7 @@ public class DialogHandler : MonoBehaviour {
 
     public string getChoiceText(int choiceNr)
     {
-        return false;
+        return "";
     }
 
 }

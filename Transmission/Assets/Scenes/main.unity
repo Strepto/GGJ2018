@@ -4466,6 +4466,9 @@ MonoBehaviour:
   playerTextPrefab: {fileID: 1252333227120952, guid: c20ac06286267ee4fb022090cae20fd2,
     type: 2}
   textPanel: {fileID: 368218755}
+  firstChoice: {fileID: 300193436}
+  secondhoice: {fileID: 1408368618}
+  thirdChoice: {fileID: 1167617996}
 --- !u!1 &1250969841
 GameObject:
   m_ObjectHideFlags: 0
