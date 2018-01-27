@@ -37,7 +37,7 @@ namespace Transmission
 
         private Coroutine currentCallbackCoroutine;
 
-        public void Start()
+        public void Awake()
         {
             CurrentMovementState = MovementState.Idle;
             this.spriteAnimator = GetComponent<SimpleSpriteAnimator>();
