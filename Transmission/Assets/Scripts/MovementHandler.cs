@@ -194,11 +194,6 @@ namespace Transmission
 
                 }
             }
-            //else
-            //{
-            //    spriteAnimator.PlayAnimation("Idle" + animExtension);
-            //}
-
         }
     }
 }

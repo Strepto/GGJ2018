@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Helpers;
+using System.Collections;
 using System.Collections.Generic;
 using Transmission;
 using UnityEngine;
@@ -107,11 +108,7 @@ public class DialogWindow : Singleton<DialogWindow> {
         ActiveDialog = false;
         hasStartedDialog = false;
         int i = 0;
-        while(textPanel.transform.childCount > 0 && i < 200)
-        {
-            DestroyImmediate(textPanel.transform.GetChild(0).gameObject);
-            i++;
-        }
+        textPanel.transform.DestroyAllChildren();
     }
 
     public void writeNpcMessage(string text)
