@@ -12,7 +12,10 @@ UWP/
 project.json
 project.lock.json
 WindowsStoreApp/
-
+Transmission_Data/
+Transmission.exe
+UnityPlayer.dll
+WinPixEventRuntime.dll
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #

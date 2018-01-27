@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private const float JoystickMovementThreshold = 0.1f;
     public float moveSpeed = 1.0f;
 
+
     public enum PlayerState
     {
         Boy, 
