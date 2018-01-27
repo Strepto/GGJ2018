@@ -156,7 +156,7 @@ namespace Transmission
         }
 
 
-        private void SetFacingDirection(Vector2 direction, bool isMoving)
+        public void SetFacingDirection(Vector2 direction, bool isMoving)
         {
 
             string animExtension = string.Empty;
