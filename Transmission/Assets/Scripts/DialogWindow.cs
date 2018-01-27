@@ -8,7 +8,6 @@ public class DialogWindow : Singleton<DialogWindow> {
 
     private DialogHandler currentHandler;
     public Image playerImage;
-    public PlayerController player;
     public bool ActiveDialog { get; private set; }
 
     public Sprite[] playerPortraits;
@@ -44,7 +43,7 @@ public class DialogWindow : Singleton<DialogWindow> {
 
     private void initiateDialog(string text)
     {
-        if (player.CurrentPlayerState == PlayerController.PlayerState.Boy)
+        if (PlayerController.Instance.CurrentPlayerState == PlayerController.PlayerState.Boy)
         {
             playerImage.sprite = playerPortraits[0];
         }

@@ -6,14 +6,12 @@ using UnityEngine;
 public class DialogHandler : MonoBehaviour {
 
     private NpcBehaviourScript behaviour;
-    private DialogWindow dialogWindow;
     private NpcBrain brain;
 
     public GameObject dialogPanel;
 
 
 	void Start () {
-        dialogWindow = dialogPanel.GetComponent<DialogWindow>();
         behaviour = GetComponent<NpcBehaviourScript>();
         brain = GetComponent<NpcBrain>();
     }
@@ -26,7 +24,7 @@ public class DialogHandler : MonoBehaviour {
     {
         dialogPanel.SetActive(true);
 
-        dialogWindow.startDialog(this, brain.getInitialText());
+        DialogWindow.Instance.startDialog(this, brain.getInitialText());
     }
 
     public void EndDialog()
@@ -41,7 +39,7 @@ public class DialogHandler : MonoBehaviour {
 
     public string getChoiceText(int choiceNr)
     {
-        return "";
+        return brain.getChoiceText(choiceNr);
     }
 
 }

@@ -11,7 +11,7 @@ public class ToiletGuardScript : NpcBrain {
     public override string getInitialText()
     {
 
-        if (player.CurrentPlayerState == PlayerController.PlayerState.Boy)
+        if (PlayerController.Instance.CurrentPlayerState == PlayerController.PlayerState.Boy)
         {
             return "You cannot enter here!";
         }
@@ -26,4 +26,10 @@ public class ToiletGuardScript : NpcBrain {
         return "error";
     }
 
+
+
+    public override string getChoiceText(int choiceNr)
+    {
+        return "error";
+    }
 }

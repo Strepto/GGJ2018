@@ -6,7 +6,6 @@ using UnityEngine;
 public class NpcBrain : MonoBehaviour {
 
     public DialogHandler dialog;
-    public PlayerController player;
 
     private int state;
 
@@ -21,6 +20,12 @@ public class NpcBrain : MonoBehaviour {
     }
 
     public virtual string getTextAndSendReply(int choice)
+    {
+        return "error";
+    }
+
+
+    public virtual string getChoiceText(int choiceNr)
     {
         return "error";
     }
