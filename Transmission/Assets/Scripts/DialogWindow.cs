@@ -81,7 +81,7 @@ public class DialogWindow : Singleton<DialogWindow> {
         }
         firstChoiceText.GetComponent<Text>().text = text1;
         string text2 = currentHandler.getChoiceText(1);
-        if (text1 == "")
+        if (text2 == "")
         {
             secondChoiceText.GetComponentInParent<Button>().interactable = false;
         }
@@ -91,7 +91,7 @@ public class DialogWindow : Singleton<DialogWindow> {
         }
         secondChoiceText.GetComponent<Text>().text = text2;
         string text3 = currentHandler.getChoiceText(2);
-        if (text1 == "")
+        if (text3 == "")
         {
             thirdChoiceText.GetComponentInParent<Button>().interactable = false;
         }

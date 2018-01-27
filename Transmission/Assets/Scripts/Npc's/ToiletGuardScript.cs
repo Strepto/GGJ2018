@@ -61,9 +61,9 @@ public class ToiletGuardScript : NpcBrain {
             case 1:
                 switch (choiceNr)
                 {
-                    case 1:
-                        return "Why not?";
                     case 0:
+                        return "Why not?";
+                    case 1:
                         return "";
                     case 2:
                         return "";
