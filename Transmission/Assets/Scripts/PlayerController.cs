@@ -13,10 +13,8 @@ namespace Transmission
         public float moveSpeed = 2.0f;
         public InteractionZoneController interactionZoneController;
 
-        public Dictionary<string, List<PickupItem>> playerItems = new Dictionary<string, List<PickupItem>>();
-
-
-
+        public Dictionary<string, List<PickupItem>> PlayerItems = new Dictionary<string, List<PickupItem>>();
+        
 
         public enum PlayerState
         {
@@ -39,7 +37,7 @@ namespace Transmission
         public int ItemCheck(string itemKey)
         {
             List<PickupItem> list;
-            if (playerItems.TryGetValue(itemKey, out list))
+            if (PlayerItems.TryGetValue(itemKey, out list))
             {
                 return list.Sum(x => x.Amount);
             }
@@ -53,7 +51,7 @@ namespace Transmission
                 return false;
             }
             int amountToRemove = count;
-            var itemList = playerItems[itemKey];
+            var itemList = PlayerItems[itemKey];
             for (int i = itemList.Count -1 ; i >= 0 ; i--)
             {
                 var item = itemList[i];
@@ -68,6 +66,11 @@ namespace Transmission
                     break;
                 }
             };
+
+            if(itemList.Count == 0)
+            {
+                PlayerItems.Remove(itemKey);
+            }
             return true;
         }
 
@@ -130,12 +133,12 @@ namespace Transmission
                         string itemKey = isPickupItem.ItemKey;
 
                         List<PickupItem> list;
-                        if (!playerItems.TryGetValue(itemKey, out list))
+                        if (!PlayerItems.TryGetValue(itemKey, out list))
                         {
                             list = new List<PickupItem>();
-                            playerItems[isPickupItem.ItemKey] = list;
+                            PlayerItems[isPickupItem.ItemKey] = list;
                         }
-                        playerItems[isPickupItem.ItemKey].Add(isPickupItem);
+                        PlayerItems[isPickupItem.ItemKey].Add(isPickupItem);
                     }
                 }
             }

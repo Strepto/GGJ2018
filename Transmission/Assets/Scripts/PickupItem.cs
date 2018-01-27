@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class PickupItem : MonoBehaviour {
 
+    public SpriteRenderer SpriteRenderer;
     public string ItemName = "Item Name";
     public string ItemKey = "testitem";
     [SerializeField]

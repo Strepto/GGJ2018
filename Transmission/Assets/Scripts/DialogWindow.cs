@@ -106,6 +106,7 @@ public class DialogWindow : Singleton<DialogWindow> {
     public void endDialog()
     {
         ActiveDialog = false;
+
         hasStartedDialog = false;
         int i = 0;
         textPanel.transform.DestroyAllChildren();
