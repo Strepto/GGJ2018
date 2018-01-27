@@ -94,7 +94,7 @@ namespace Transmission
             Vector3 position = transform.position;
             if (!hasFinishedMoving && Vector3.Distance(transform.position, CurrentTarget) > 0.1f)
             {
-                this.transform.position = Vector3.MoveTowards(transform.position, CurrentTarget, 0.1f);
+                this.transform.position = Vector3.MoveTowards(transform.position, CurrentTarget, 0.05f * moveSpeed) ;
             }
             else if (!hasFinishedMoving)
             {

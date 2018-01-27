@@ -41,7 +41,7 @@ namespace Transmission
             List<PickupItem> list;
             if (playerItems.TryGetValue(itemKey, out list))
             {
-                return list.Count;
+                return list.Sum(x => x.Amount);
             }
             return 0;
         }
@@ -52,8 +52,22 @@ namespace Transmission
             {
                 return false;
             }
-
-            playerItems[itemKey].RemoveRange(0, count);
+            int amountToRemove = count;
+            var itemList = playerItems[itemKey];
+            for (int i = itemList.Count -1 ; i >= 0 ; i--)
+            {
+                var item = itemList[i];
+                int saldo = item.RemoveAmount(amountToRemove);
+                if(item.Amount == 0)
+                {
+                    itemList.Remove(item);
+                }
+                amountToRemove = Mathf.Abs(saldo);
+                if(amountToRemove <= 0)
+                {
+                    break;
+                }
+            };
             return true;
         }
 
