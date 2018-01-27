@@ -2494,6 +2494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemName: Item Name
+  ItemKey: testitem
   audioClip: {fileID: 8300000, guid: 736e668aa4e7c1d4cb004e5c4e5bc2ef, type: 3}
 --- !u!58 &648111221
 CircleCollider2D:
@@ -3021,7 +3022,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2.02
   interactionZoneController: {fileID: 0}
-  playerItems: []
   CurrentPlayerState: 0
 --- !u!114 &708893875
 MonoBehaviour:
@@ -4467,7 +4467,7 @@ MonoBehaviour:
     type: 2}
   textPanel: {fileID: 368218755}
   firstChoice: {fileID: 300193436}
-  secondhoice: {fileID: 1408368618}
+  secondChoice: {fileID: 1408368618}
   thirdChoice: {fileID: 1167617996}
 --- !u!1 &1250969841
 GameObject:
