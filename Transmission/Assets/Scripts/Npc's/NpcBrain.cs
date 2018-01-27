@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NpcBrain : MonoBehaviour {
 
+    public DialogHandler dialog;
 
     public string[] textOptions;
     public string[] playerTextOptions;

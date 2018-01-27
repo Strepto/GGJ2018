@@ -20,22 +20,22 @@ public class DialogWindow : Singleton<DialogWindow> {
     private bool hasStartedDialog;
 
     void Start () {
-        ActiveDialog = false;
         hasStartedDialog = false;
     }
 	
 	void Update () {
-		if (ActiveDialog && !hasStartedDialog)
-        {
-            hasStartedDialog = true;
-            initiateDialog();
-        }
+		
 	}
 
     public void startDialog(DialogHandler handler)
     {
         currentHandler = handler;
         ActiveDialog = true;
+        if (!hasStartedDialog)
+        {
+            hasStartedDialog = true;
+            initiateDialog();
+        }
     }
 
     private void initiateDialog()
