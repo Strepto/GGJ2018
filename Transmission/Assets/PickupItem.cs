@@ -5,6 +5,7 @@ using UnityEngine;
 public class PickupItem : MonoBehaviour {
 
     public string ItemName = "Item Name";
+    public string ItemKey = "testitem";
     public AudioClip audioClip;
 
 	void Start () {

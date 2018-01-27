@@ -1,6 +1,7 @@
 ﻿using SeedValue;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 namespace Transmission
 {
@@ -12,7 +13,10 @@ namespace Transmission
         public float moveSpeed = 2.0f;
         public InteractionZoneController interactionZoneController;
 
-        public List<PickupItem> playerItems = new List<PickupItem>();
+        public Dictionary<string, List<PickupItem>> playerItems = new Dictionary<string, List<PickupItem>>();
+
+
+
 
         public enum PlayerState
         {
@@ -32,6 +36,27 @@ namespace Transmission
             movementHandler = GetComponent<MovementHandler>();
         }
         
+        public int ItemCheck(string itemKey)
+        {
+            List<PickupItem> list;
+            if (playerItems.TryGetValue(itemKey, out list))
+            {
+                return list.Count;
+            }
+            return 0;
+        }
+
+        public bool ItemTake(string itemKey, int count = 1)
+        {
+            if (ItemCheck(itemKey) < count)
+            {
+                return false;
+            }
+
+            playerItems[itemKey].RemoveRange(0, count);
+            return true;
+        }
+
 
         void Update()
         {
@@ -88,7 +113,15 @@ namespace Transmission
                     if (isPickupItem != null)
                     {
                         isPickupItem.PrepareForPickup();
-                        playerItems.Add(isPickupItem);
+                        string itemKey = isPickupItem.ItemKey;
+
+                        List<PickupItem> list;
+                        if (!playerItems.TryGetValue(itemKey, out list))
+                        {
+                            list = new List<PickupItem>();
+                            playerItems[isPickupItem.ItemKey] = list;
+                        }
+                        playerItems[isPickupItem.ItemKey].Add(isPickupItem);
                     }
                 }
             }
