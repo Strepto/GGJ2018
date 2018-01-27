@@ -5,6 +5,7 @@ using UnityEngine;
 public class NpcBehaviourScript : MonoBehaviour {
 
     public MovementHandler movement;
+    public DialogHandler dialog;
 
     public Vector2[] pointList;
     private int pointInList = 0;
@@ -23,6 +24,7 @@ public class NpcBehaviourScript : MonoBehaviour {
         if (other.CompareTag("Player"))
         {
             Stop();
+            dialog.StartDialog();
         }
     }
 
