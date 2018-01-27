@@ -6,10 +6,10 @@ namespace Transmission
 {
 
     [RequireComponent(typeof(SimpleSpriteAnimator))]
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : Singleton<PlayerController>
     {
         private const float JoystickMovementThreshold = 0.1f;
-        public float moveSpeed = 1.0f;
+        public float moveSpeed = 2.0f;
 
 
         public enum PlayerState
@@ -23,20 +23,25 @@ namespace Transmission
         private Vector3 moveDirection = Vector3.zero;
         private SimpleSpriteAnimator spriteAnimator;
         private MovementHandler movementHandler;
-
-        // Use this for initialization
+        
         void Start()
         {
             spriteAnimator = GetComponent<SimpleSpriteAnimator>();
             movementHandler = GetComponent<MovementHandler>();
         }
+        
 
-        // Update is called once per frame
         void Update()
         {
-            // 1
+
+            if (DialogWindow.Instance.ActiveDialog)
+            {
+                // No movement during active dialog.
+                return;
+            }
+
             Vector3 currentPosition = transform.position;
-            // 2
+
             float movementX = Input.GetAxis("Horizontal");
             float movementY = Input.GetAxis("Vertical");
             var movement = new Vector2(movementX, movementY);
@@ -55,7 +60,6 @@ namespace Transmission
             }
             else if (Input.GetButton("Submit"))
             {
-
                 if (CurrentPlayerState == PlayerState.Boy)
                 {
                     CurrentPlayerState = PlayerState.Girl;
@@ -65,20 +69,8 @@ namespace Transmission
                 {
                     CurrentPlayerState = PlayerState.Boy;
                     spriteAnimator.PlayAnimation("SwitchGirlBoy");
-
                 }
-
-
-
-
             }
-            else
-            {
-
-                //spriteAnimator.PlayAnimation("Idle");
-            }
-
-
         }
     }
 

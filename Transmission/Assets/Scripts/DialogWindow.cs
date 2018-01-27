@@ -4,17 +4,17 @@ using Transmission;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DialogWindow : MonoBehaviour {
+public class DialogWindow : Singleton<DialogWindow> {
 
     private DialogHandler currentHandler;
     public Image playerImage;
     public PlayerController player;
-    public bool activeDialog { get; private set; }
+    public bool ActiveDialog { get; private set; }
 
     public Sprite[] playerPortraits;
 
     void Start () {
-        activeDialog = false;
+        ActiveDialog = false;
     }
 	
 	void Update () {
@@ -24,7 +24,7 @@ public class DialogWindow : MonoBehaviour {
     public void startDialog(DialogHandler handler)
     {
         currentHandler = handler;
-        activeDialog = true;
+        ActiveDialog = true;
 
         if (player.CurrentPlayerState == PlayerController.PlayerState.Boy)
         {
@@ -38,7 +38,7 @@ public class DialogWindow : MonoBehaviour {
 
     public void endDialog()
     {
-        activeDialog = false;
+        ActiveDialog = false;
     }
 
     public void writeNpcMessage(string text)
