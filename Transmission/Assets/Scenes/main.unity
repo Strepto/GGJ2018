@@ -5985,18 +5985,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1125fd8e195eff34e9930632667ea1b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textOptions:
-  - You cannot pass here!
-  - You're free to enter.
-  - Because this is a girls-only bathroom of course!
-  - Stop wasting my time, shoo!
-  playerTextOptions:
-  - Why not?
-  - But I really have to go!
-  - C'mon man!
-  - What if I give you 100$
-  numberOfTextOptions: 0
-  numberOfPlayerTextOptions: 0
+  dialog: {fileID: 1674790853}
+  player: {fileID: 708893874}
 --- !u!1 &1709809974
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,29 +27,29 @@ public class DialogWindow : Singleton<DialogWindow> {
 		
 	}
 
-    public void startDialog(DialogHandler handler)
+    public void startDialog(DialogHandler handler, string initialText)
     {
         currentHandler = handler;
         ActiveDialog = true;
         if (!hasStartedDialog)
         {
             hasStartedDialog = true;
-            initiateDialog();
+            initiateDialog(initialText);
         }
     }
 
-    private void initiateDialog()
+    private void initiateDialog(string text)
     {
         if (player.CurrentPlayerState == PlayerController.PlayerState.Boy)
         {
             playerImage.sprite = playerPortraits[0];
-            writeNpcMessage("Hi boy");
         }
         else
         {
             playerImage.sprite = playerPortraits[1];
-            writeNpcMessage("Hi girl");
         }
+
+        writeNpcMessage(text);
     }
 
     public void sendReply(int replyNr)
