@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ToiletGuardScript : NpcBrain {
 
-
+    
 
 
     public override string getInitialText()
@@ -21,5 +21,9 @@ public class ToiletGuardScript : NpcBrain {
         }
     }
 
+    public override string getTextAndSendReply(int choice)
+    {
+        return "error";
+    }
 
 }

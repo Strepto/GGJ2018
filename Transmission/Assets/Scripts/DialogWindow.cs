@@ -54,7 +54,7 @@ public class DialogWindow : Singleton<DialogWindow> {
 
     public void sendReply(int replyNr)
     {
-
+        writeNpcMessage(currentHandler.getTextAndSendReply(replyNr));
     }
 
     public void endDialog()
