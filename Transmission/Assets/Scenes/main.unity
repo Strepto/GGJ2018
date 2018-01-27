@@ -4067,7 +4067,7 @@ GameObject:
   - component: {fileID: 648111221}
   - component: {fileID: 648111220}
   m_Layer: 8
-  m_Name: BaseItem
+  m_Name: PurseItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4084,8 +4084,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5894b2475d66a3941b5797b2953fede0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemName: Item Name
-  ItemKey: testitem
+  ItemName: Purse
+  ItemKey: purse
   _amount: 1
   audioClip: {fileID: 8300000, guid: 736e668aa4e7c1d4cb004e5c4e5bc2ef, type: 3}
 --- !u!58 &648111221
@@ -7953,7 +7953,6 @@ GameObject:
   - component: {fileID: 1623384915}
   - component: {fileID: 1623384914}
   - component: {fileID: 1623384913}
-  - component: {fileID: 1623384912}
   m_Layer: 8
   m_Name: NeedsPurse
   m_TagString: Untagged
@@ -7961,23 +7960,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1623384912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1623384911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1125fd8e195eff34e9930632667ea1b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movement: {fileID: 1623384913}
-  dialog: {fileID: 1623384914}
-  ladiesRoomTrigger: {fileID: 1761209098}
-  basePosition: {x: 4.5, y: 1.5}
-  blockLadiesRoom: {x: 4.5, y: 3.5}
-  blockMensRoom: {x: 4.5, y: -0.5}
 --- !u!114 &1623384913
 MonoBehaviour:
   m_ObjectHideFlags: 0
