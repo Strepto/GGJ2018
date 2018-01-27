@@ -7,18 +7,24 @@ public class ToiletGuardScript : NpcBrain {
 
     public Trigger ladiesRoomTrigger;
 
+    public Vector2 basePosition;
+    public Vector2 blockLadiesRoom;
+    public Vector2 blockMensRoom;
+
     protected override void Start()
     {
         base.Start();
         ladiesRoomTrigger.onTriggerEnter += ladiesRoomOnEnterTriggered;
         ladiesRoomTrigger.onTriggerExit += ladiesRoomOnExitTriggered;
         speed = 1;
+        MoveToPoint(basePosition);
     }
 
     private void ladiesRoomOnEnterTriggered(Trigger source)
     {
         if (stateNumber != -1)
         {
+            Debug.Log("adf");
             MoveToPoint(blockLadiesRoom);
             speed = 2;
         }
