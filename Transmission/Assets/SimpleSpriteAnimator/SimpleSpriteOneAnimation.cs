@@ -198,8 +198,7 @@ namespace SeedValue
 		{
 			m_AnimationTypeTMP = m_AnimationType;
 
-
-			Debug.Log ("AnimationLoop");
+            
 
 
 			while (m_IsPaused == false) {
@@ -216,7 +215,6 @@ namespace SeedValue
 				case AnimationType.LOOP:
 
 					TypeLoop ();
-					Debug.Log ("AnimationLoop");
 
 					yield return  new WaitForSeconds (m_WaitBetweenFramesTime);
 					break;
@@ -284,8 +282,6 @@ namespace SeedValue
 
 				InvokeRepeating ("TypeLoop", 0, m_WaitBetweenFramesTime);
 				//TypeLoop ();
-
-				Debug.Log ("AnimationLoop");
 
 			//	yield return  new WaitForSeconds (m_WaitBetweenFramesTime);
 				break;
@@ -457,7 +453,7 @@ namespace SeedValue
 
 		void OnEnable ()
 		{
-			Debug.Log ("SimpleSpriteOneAnimation : OnEnable");
+			//Debug.Log ("SimpleSpriteOneAnimation : OnEnable");
 
 			ScanChildsRoot ();
 

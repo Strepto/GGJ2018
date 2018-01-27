@@ -42,7 +42,7 @@ public class NpcBehaviourScript : MonoBehaviour {
 
     void Stop()
     {
-        //movement.Stop();
+        movement.Stop();
     }
 
     void MoveToPoint(Vector2 point)

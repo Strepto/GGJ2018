@@ -49,7 +49,7 @@ namespace Transmission
                 moveDirection.z = 0;
                 moveDirection.Normalize();
 
-                Vector3 target = moveDirection * moveSpeed + currentPosition;
+                Vector3 target = moveDirection * 0.1f * moveSpeed + currentPosition;
                 movementHandler.MoveToPosition(target, moveSpeed);
                 //transform.position = Vector3.Lerp(currentPosition, target, Time.deltaTime);
             }
