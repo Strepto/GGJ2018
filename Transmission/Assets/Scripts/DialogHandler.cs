@@ -20,15 +20,16 @@ public class DialogHandler : MonoBehaviour {
 		
 	}
 
-    public void StartDialog()
+    public void startDialog()
     {
         dialogPanel.SetActive(true);
 
         DialogWindow.Instance.startDialog(this, brain.getInitialText());
     }
 
-    public void EndDialog()
+    public void endDialog()
     {
+        DialogWindow.Instance.endDialog();
         dialogPanel.SetActive(false);
     }
 
@@ -41,5 +42,4 @@ public class DialogHandler : MonoBehaviour {
     {
         return brain.getChoiceText(choiceNr);
     }
-
 }

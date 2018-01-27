@@ -4457,7 +4457,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerImage: {fileID: 1641702898}
-  player: {fileID: 708893874}
   playerPortraits:
   - {fileID: 21300000, guid: 87b12867cacf52049999d4b9eeeafbc7, type: 3}
   - {fileID: 21300000, guid: 8d3d3ab9d273dd84e9109907d2a8764c, type: 3}
@@ -4466,9 +4465,9 @@ MonoBehaviour:
   playerTextPrefab: {fileID: 1252333227120952, guid: c20ac06286267ee4fb022090cae20fd2,
     type: 2}
   textPanel: {fileID: 368218755}
-  firstChoice: {fileID: 300193436}
-  secondChoice: {fileID: 1408368618}
-  thirdChoice: {fileID: 1167617996}
+  firstChoiceText: {fileID: 394546593}
+  secondChoiceText: {fileID: 1609951099}
+  thirdChoiceText: {fileID: 679315842}
 --- !u!1 &1250969841
 GameObject:
   m_ObjectHideFlags: 0
@@ -6133,7 +6132,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialog: {fileID: 1674790853}
-  player: {fileID: 708893874}
 --- !u!1 &1709809974
 GameObject:
   m_ObjectHideFlags: 0

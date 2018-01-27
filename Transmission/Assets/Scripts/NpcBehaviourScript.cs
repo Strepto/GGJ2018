@@ -46,7 +46,7 @@ public class NpcBehaviourScript : MonoBehaviour {
     private void startsDialog()
     {
         Stop();
-        dialog.StartDialog();
+        dialog.startDialog();
     }
 
     void Stop()
