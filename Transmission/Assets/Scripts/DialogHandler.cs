@@ -34,5 +34,9 @@ public class DialogHandler : MonoBehaviour {
         dialogPanel.SetActive(false);
     }
 
+    public string getTextAndSendReply(int choice)
+    {
+        return brain.getTextAndSendReply(choice);
+    }
 
 }
