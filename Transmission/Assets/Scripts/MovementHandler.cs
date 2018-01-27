@@ -82,6 +82,9 @@ namespace Transmission
         public void Stop()
         {
             CurrentMovementState = MovementState.Stopped;
+
+            var direction = GetDirectionSimple(this.transform.position, PlayerController.Instance.transform.position);
+            SetFacingDirection(direction, false);
             hasFinishedMoving = true;
             CurrentTarget = transform.position;
         }
@@ -101,7 +104,60 @@ namespace Transmission
             AnimateMovement(position);
         }
 
+        private Vector2 GetDirectionSimple(Vector2 from, Vector2 to)
+        {
+            var movement =  to - from;
+
+            if (Mathf.Abs(movement.x) > Mathf.Abs(movement.y))
+            {
+
+                if (movement.x > JoystickMovementThreshold)
+                {
+                    return Vector2.right;
+                }
+                else if (movement.x < -JoystickMovementThreshold)
+                {
+                    return Vector2.left;
+                }
+            }
+            else
+            {
+                if (movement.y > JoystickMovementThreshold)
+                {
+
+                    return Vector2.up;
+                }
+                else if (movement.y < JoystickMovementThreshold)
+                {
+                    return Vector2.down;
+
+                }
+            }
+            return Vector2.down;
+        }
+
+
         private void AnimateMovement(Vector3 position)
+        {
+
+
+            var moveDirection = new Vector3(CurrentTarget.x, CurrentTarget.y) - position;
+            moveDirection.z = 0;
+            if (moveDirection.magnitude < 0.04f)
+            {
+                moveDirection.Normalize();
+                SetFacingDirection(moveDirection, true);
+            }
+            else
+            {
+                SetFacingDirection(moveDirection, false);
+            }
+
+
+        }
+
+
+        private void SetFacingDirection(Vector2 direction, bool isMoving)
         {
 
             string animExtension = string.Empty;
@@ -109,24 +165,21 @@ namespace Transmission
             {
                 animExtension = playerController.CurrentPlayerState.ToString();
             }
-
-            var moveDirection = new Vector3(CurrentTarget.x, CurrentTarget.y) - position;
-            moveDirection.z = 0;
-            moveDirection.Normalize();
-
-            var movement = new Vector2(moveDirection.x, moveDirection.y);
-            if (movement.magnitude > 0.1f)
+            if (direction.magnitude > 0.1f)
             {
 
-                if (Mathf.Abs(movement.x) > Mathf.Abs(movement.y))
+                if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
                 {
 
-                    if (movement.x > JoystickMovementThreshold)
+                    if (direction.x > JoystickMovementThreshold)
                     {
                         CurrentDirection = Vector2.right;
-                        spriteAnimator.PlayAnimation("WalkRight" + animExtension);
+                        if (isMoving)
+                        {
+                            spriteAnimator.PlayAnimation("WalkRight" + animExtension);
+                        }
                     }
-                    else if (movement.x < -JoystickMovementThreshold)
+                    else if (direction.x < -JoystickMovementThreshold)
                     {
                         CurrentDirection = Vector2.left;
                         spriteAnimator.PlayAnimation("WalkLeft" + animExtension);
@@ -134,13 +187,13 @@ namespace Transmission
                 }
                 else
                 {
-                    if (movement.y > JoystickMovementThreshold)
+                    if (direction.y > JoystickMovementThreshold)
                     {
 
                         CurrentDirection = Vector2.up;
                         spriteAnimator.PlayAnimation("WalkUp" + animExtension);
                     }
-                    else if (movement.y < JoystickMovementThreshold)
+                    else if (direction.y < JoystickMovementThreshold)
                     {
                         CurrentDirection = Vector2.down;
                         spriteAnimator.PlayAnimation("WalkDown" + animExtension);
@@ -150,7 +203,6 @@ namespace Transmission
             }
             else
             {
-
                 spriteAnimator.PlayAnimation("Idle" + animExtension);
             }
 

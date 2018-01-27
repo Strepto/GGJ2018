@@ -55,7 +55,7 @@ namespace SeedValue
 
 
 
-		public void PlayAnimation (string _name)
+		public void PlayAnimation (string _name, bool freeze = false)
 		{
 			if (m_AllAnimations.ContainsKey (_name)) {
 
@@ -68,7 +68,10 @@ namespace SeedValue
 
                 //HideAllAnimations ();
                 m_AllAnimations [_name].gameObject.SetActive (true);
-				m_AllAnimations [_name].Play ();
+                if (!freeze)
+                {
+                    m_AllAnimations[_name].Play();
+                }
 
 
 				if (m_CurrentPlaing != null && m_CurrentPlaing != m_AllAnimations [_name]) {
