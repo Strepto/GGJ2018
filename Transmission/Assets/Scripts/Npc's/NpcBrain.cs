@@ -6,21 +6,22 @@ using UnityEngine;
 public class NpcBrain : MonoBehaviour {
     
     protected int stateNumber;
+    protected float speed;
 
     public MovementHandler movement;
     public DialogHandler dialog;
 
-    public Vector2[] pointList;
-    protected int pointInList = 0;
-    public float speed = 1;
+    public Vector2 basePosition;
+    public Vector2 blockLadiesRoom;
+    public Vector2 blockMensRoom;
 
-    void Start()
+    protected virtual void Start()
     {
-        MoveToPoint(pointList[pointInList]);
+        MoveToPoint(basePosition);
         stateNumber = 0;
     }
 
-    void Update()
+    protected virtual void Update()
     {
 
     }
@@ -30,50 +31,24 @@ public class NpcBrain : MonoBehaviour {
         startsDialog();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            startsDialog();
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            MoveToPoint(pointList[pointInList]);
-        }
-    }
-
-    private void startsDialog()
+    protected void startsDialog()
     {
         Stop();
         dialog.startDialog();
     }
 
-    void Stop()
+    protected void Stop()
     {
         movement.Stop();
     }
 
-    void MoveToPoint(Vector2 point)
+    protected void MoveToPoint(Vector2 point)
     {
         movement.MoveToPosition(point, speed, callback: HasMovedToPoint);
     }
 
-    void HasMovedToPoint(bool interrupted, float timeUsed)
+    protected void HasMovedToPoint(bool interrupted, float timeUsed)
     {
-        if (!interrupted)
-        {
-            pointInList++;
-            if (pointInList >= pointList.Length)
-            {
-                pointInList = 0;
-            }
-
-            MoveToPoint(pointList[pointInList]);
-        }
 
     }
 

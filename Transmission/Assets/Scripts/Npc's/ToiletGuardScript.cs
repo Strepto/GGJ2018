@@ -5,8 +5,33 @@ using UnityEngine;
 
 public class ToiletGuardScript : NpcBrain {
 
-    
+    public Trigger ladiesRoomTrigger;
 
+    protected override void Start()
+    {
+        base.Start();
+        ladiesRoomTrigger.onTriggerEnter += ladiesRoomOnEnterTriggered;
+        ladiesRoomTrigger.onTriggerExit += ladiesRoomOnExitTriggered;
+        speed = 1;
+    }
+
+    private void ladiesRoomOnEnterTriggered(Trigger source)
+    {
+        if (stateNumber != -1)
+        {
+            MoveToPoint(blockLadiesRoom);
+            speed = 2;
+        }
+    }
+
+    private void ladiesRoomOnExitTriggered(Trigger source)
+    {
+        if (stateNumber != -1)
+        {
+            MoveToPoint(basePosition);
+            speed = 1;
+        }
+    }
 
     public override string getInitialText()
     {
@@ -19,6 +44,8 @@ public class ToiletGuardScript : NpcBrain {
         else
         {
             stateNumber = -1;
+            MoveToPoint(basePosition);
+            speed = 1;
             return "You're free to pass, m'lady";
         }
     }
