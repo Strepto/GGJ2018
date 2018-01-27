@@ -144,16 +144,15 @@ namespace Transmission
             var moveDirection = new Vector3(CurrentTarget.x, CurrentTarget.y) - position;
             moveDirection.z = 0;
             moveDirection.Normalize();
-            if (Vector2.Distance(CurrentTarget, position) < 0.1f)
-            {
-                SetFacingDirection(moveDirection, false);
-            }
-            else
+
+            if (Vector2.Distance(CurrentTarget, position) > 0.1f)
             {
                 SetFacingDirection(moveDirection, true);
             }
-
-
+            else
+            {
+                SetFacingDirection(CurrentDirection, false); 
+            }
         }
 
 

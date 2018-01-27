@@ -58,19 +58,25 @@ namespace SeedValue
 		public void PlayAnimation (string _name, bool freeze = false)
 		{
 			if (m_AllAnimations.ContainsKey (_name)) {
+                var targetAnim = m_AllAnimations[_name];
 
-                if (m_CurrentPlaing == m_AllAnimations[_name])
+                if (m_CurrentPlaing == targetAnim && !freeze)
                 {
+                    
                     //same animation
                     return;
                 }
 
 
                 //HideAllAnimations ();
-                m_AllAnimations [_name].gameObject.SetActive (true);
+                targetAnim.gameObject.SetActive (true);
                 if (!freeze)
                 {
-                    m_AllAnimations[_name].Play();
+                    targetAnim.Play();
+                }
+                else
+                {
+                    targetAnim.Pause();
                 }
 
 
