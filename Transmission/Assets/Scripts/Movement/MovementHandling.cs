@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class MovementHandler : MonoBehaviour {
+public class MovementHandling : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
