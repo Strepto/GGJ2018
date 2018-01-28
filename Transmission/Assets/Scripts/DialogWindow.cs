@@ -30,6 +30,7 @@ public class DialogWindow : Singleton<DialogWindow> {
 
     void Start () {
         hasStartedDialog = false;
+        gameObject.SetActive(false);
     }
 
     public void startDialog(DialogHandler handler, string initialText)
