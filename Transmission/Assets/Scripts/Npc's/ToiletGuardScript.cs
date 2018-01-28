@@ -75,9 +75,9 @@ public class ToiletGuardScript : NpcBrain {
 
     public override string getChoiceText(int choiceNr)
     {
-        switch (stateNumber)
+        switch (state)
         {
-            case -1:
+            case "freeToPass":
                 switch (choiceNr)
                 {
                     case 0:
@@ -89,7 +89,7 @@ public class ToiletGuardScript : NpcBrain {
                     default:
                         return "error";
                 }
-            case 1:
+            case "cannotEnter":
                 switch (choiceNr)
                 {
                     case 0:
@@ -101,7 +101,7 @@ public class ToiletGuardScript : NpcBrain {
                     default:
                         return "error";
                 }
-            case 2:
+            case "cannotEnter2":
                 switch (choiceNr)
                 {
                     case 0:
@@ -113,7 +113,7 @@ public class ToiletGuardScript : NpcBrain {
                     default:
                         return "error";
                 }
-            case 3:
+            case "cannotEnter3":
                 switch (choiceNr)
                 {
                     case 0:
