@@ -22,7 +22,7 @@ public class NeedsPurseScript : NpcBrain
     {
         if (PlayerController.Instance.ItemCheck("purse") > 0)
         {
-            stateNumber = 1;
+            state = "hasPurse";
         }
         if (hasGivenQuest)
         {
@@ -34,14 +34,14 @@ public class NeedsPurseScript : NpcBrain
 
     public override string getTextAndSendReply(int choice)
     {
-        switch (stateNumber)
+        switch (state)
         {
-            case 0:
+            case "initialState":
                 return "endDialog()";
-            case 1:
+            case "hasPurse":
                 if (choice == 2)
                 {
-                    stateNumber = 2;
+                    state = "thanks";
                     PlayerController.Instance.ItemTake("purse");
                     PlayerController.Instance.ItemGiveToPlayer(Instantiate(money));
                     return "Thank you! Take this as a reward!";
@@ -50,7 +50,7 @@ public class NeedsPurseScript : NpcBrain
                 {
                     return "endDialog()";
                 }
-            case 2:
+            case "thanks":
                 MoveToPoint(openPosition, Vector2.down);
                 return "endDialog()";
             default:
@@ -60,9 +60,9 @@ public class NeedsPurseScript : NpcBrain
 
     public override string getChoiceText(int choiceNr)
     {
-        switch (stateNumber)
+        switch (state)
         {
-            case 0:
+            case "initialState":
                 switch (choiceNr)
                 {
                     case 0:
@@ -74,7 +74,7 @@ public class NeedsPurseScript : NpcBrain
                     default:
                         return "error";
                 }
-            case 1:
+            case "hasPurse":
                 switch (choiceNr)
                 {
                     case 0:
@@ -86,7 +86,7 @@ public class NeedsPurseScript : NpcBrain
                     default:
                         return "error";
                 }
-            case 2:
+            case "thanks":
                 switch (choiceNr)
                 {
                     case 0:

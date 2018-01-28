@@ -21,7 +21,7 @@ public class ToiletGuardScript : NpcBrain {
 
     private void ladiesRoomOnEnterTriggered(Trigger source)
     {
-        if (stateNumber != -1)
+        if (state != "freeToPass")
         {
             MoveToPoint(blockLadiesRoom, Vector2.left);
             speed = 2;
@@ -30,7 +30,7 @@ public class ToiletGuardScript : NpcBrain {
 
     private void ladiesRoomOnExitTriggered(Trigger source)
     {
-        if (stateNumber != -1)
+        if (state != "freeToPass")
         {
             MoveToPoint(basePosition, Vector2.left);
             speed = 1;
@@ -41,13 +41,13 @@ public class ToiletGuardScript : NpcBrain {
     {
 
         if (PlayerController.Instance.CurrentPlayerState == PlayerController.PlayerState.Boy)
-        { 
-            stateNumber = 1;
+        {
+            state = "cannotEnter";
             return "You cannot enter here!";
         }
         else
         {
-            stateNumber = -1;
+            state = "freeToPass";
             MoveToPoint(basePosition, Vector2.left);
             speed = 1;
             return "You're free to pass, m'lady";
@@ -56,17 +56,17 @@ public class ToiletGuardScript : NpcBrain {
 
     public override string getTextAndSendReply(int choice)
     {
-        switch (stateNumber)
+        switch (state)
         {
-            case -1:
+            case "freeToPass":
                 return "endDialog()";
-            case 1:
-                stateNumber = 2;
+            case "cannotEnter":
+                state = "cannotEnter2";
                 return "Because this is a girls-only bathroom!";
-            case 2:
-                stateNumber = 3;
+            case "cannotEnter2":
+                state = "cannotEnter3";
                 return "Stop wasting my time! Shoo!";
-            case 3:
+            case "cannotEnter3":
                 return "endDialog()";
             default:
                 return "error";
@@ -75,9 +75,9 @@ public class ToiletGuardScript : NpcBrain {
 
     public override string getChoiceText(int choiceNr)
     {
-        switch (stateNumber)
+        switch (state)
         {
-            case -1:
+            case "freeToPass":
                 switch (choiceNr)
                 {
                     case 0:
@@ -89,7 +89,7 @@ public class ToiletGuardScript : NpcBrain {
                     default:
                         return "error";
                 }
-            case 1:
+            case "cannotEnter":
                 switch (choiceNr)
                 {
                     case 0:
@@ -101,7 +101,7 @@ public class ToiletGuardScript : NpcBrain {
                     default:
                         return "error";
                 }
-            case 2:
+            case "cannotEnter2":
                 switch (choiceNr)
                 {
                     case 0:
@@ -113,7 +113,7 @@ public class ToiletGuardScript : NpcBrain {
                     default:
                         return "error";
                 }
-            case 3:
+            case "cannotEnter3":
                 switch (choiceNr)
                 {
                     case 0:
