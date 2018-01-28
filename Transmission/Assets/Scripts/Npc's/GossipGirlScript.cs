@@ -8,6 +8,7 @@ public class GossipGirlScript : NpcBrain
     public PickupItem rumor;
 
     private bool hasGivenRumor = false;
+    private bool isInLove = false;
 
     private int drinks = 0;
 
@@ -27,19 +28,27 @@ public class GossipGirlScript : NpcBrain
         {
             if (drinks < 1)
             {
-                return "Hey cutie, are you gonna buy me a drink or what?";
-                state = "";
+                state = "giveDrink";
+                return "You're cute, are you gonna buy me a drink or what?";
             }
             if (drinks < 3)
             {
+                state = "giveDrink";
                 return "C'mon, get me one more!";
             }
+            state = "tipsyBoy";
             return "I'm feeling tipsy... *giggle*";
         }
         if (drinks < 3)
         {
+            state = "heyGirl"; 
+            if (isInLove)
+            {
+                return  "Hi... You're pretty...";
+            }
             return "Hey girl, anything juicy happening?";
         }
+        state = "tipsyGirl";
         return "I'm feeling tipsy... *giggle*";
     }
 
@@ -47,87 +56,99 @@ public class GossipGirlScript : NpcBrain
     {
         switch (state)
         {
-            case "initialState":
-                if (choice == 1)
+            case "giveDrink":
+                if (choice == 0)
                 {
-                    state = "buyDrink";
-                    return "Of course, what do you want?";
-                }
-                if (choice == 2)
-                {
-                    return "endDialog()";
-                }
-                else
-                {
-                    state = "gossip";
-                    if (hasGivenRumor)
-                    {
-                        return "My poor friend...";
-                    }
-                    return "A friend of mine is being bullied. He's having a really hard time...";
-                }
-            case "hasSavedVictim":
-                if (choice == 2)
-                {
-                    state = "thanks";
-                    return "Thank you! Take this as a reward!";
+                    state = "gaveVodka";
+                    return "Yuck! Who drinks that?!";
                 }
                 if (choice == 1)
                 {
-                    state = "buyDrink";
-                    return "Of course, what do you want?";
+                    state = "gaveCosmopolitan";
+                    PlayerController.Instance.ItemTake("cosmopolitan", 1);
+                    return "How did you know? Cosmopolitans are my favourite!";
                 }
                 else
                 {
-                    state = "gossip";
-                    return "A friend of mine is being bullied. He's having a really hard time...";
+                    state = "goBuyDrink";
+                    return "Then go buy me some, silly!";
                 }
-            case "gossip":
+            case "gaveVodka":
+                return "endDialog()";
+            case "gaveCosmopolitan":
+                return "endDialog()";
+            case "goBuyDrink":
+                return "endDialog()";
+            case "tipsyBoy":
+                if (choice == 0)
+                {
+                    state = "exit";
+                    return "I'm not gonna tell you! *Giggle*";
+                }
+                if (choice == 1)
+                {
+                    state = "rejected";
+                    return "Erm.. Ok... You're creepy...";
+                }
+                else
+                {
+                    state = "exit";
+                    return "Mind your own business";
+                }
+            case "tipsyGirl":
+                if (choice == 0)
+                {
+                    state = "givingGossip";
+                    return "Okay, but you gotta keep it to yourself ok?";
+                }
+                if (choice == 1)
+                {
+                    state = "accepted";
+                    isInLove = true;
+                    return "... ... I kinda like you too...";
+                }
+                else
+                {
+                    state = "exit";
+                    return "Mind your own business";
+                }
+            case "givingGossip":
                 if (choice == 0)
                 {
                     hasGivenRumor = true;
-                    return "Thank you! If you can help him, I'll give you a reward!";
-                }
-                else
-                {
-                    return "endDialog()";
-                }
-            case "buyDrink":
-                if (choice == 0)
-                {
-                    return "endDialog()";
+                    PlayerController.Instance.ItemGiveToPlayer(rumor);
+                    return "*Whisper whisper* *Giggle*";
                 }
                 if (choice == 1)
                 {
-                    if (PlayerController.Instance.ItemCheck("money") >= 5)
-                    {
-                        PlayerController.Instance.ItemTake("money", 5);
-                        state = "hasBoughtDrink";
-                        return "Here you go! Anything else?";
-                    }
-                    state = "initialState";
-                    if (PlayerController.Instance.CurrentPlayerState == PlayerController.PlayerState.Boy)
-                    {
-                        return "You don't have enough cash sonny!";
-                    }
-                    return "You don't have enough cash lassy!";
+                    state = "exit";
+                    return "Then I can't tell you...";
                 }
                 else
                 {
-                    if (PlayerController.Instance.ItemCheck("money") >= 10)
-                    {
-                        PlayerController.Instance.ItemTake("money", 10);
-                        state = "hasBoughtDrink";
-                        return "Here you go! Anything else?";
-                    }
-                    state = "initialState";
-                    if (PlayerController.Instance.CurrentPlayerState == PlayerController.PlayerState.Boy)
-                    {
-                        return "You don't have enough cash sonny!";
-                    }
-                    return "You don't have enough cash lassy!";
+                    state = "exit";
+                    return "Mind your own business";
                 }
-            case "thanks":
+            case "heyGirl":
+                if (choice == 0)
+                {
+                    state = "exit";
+                    return "Then why should I bother?";
+                }
+                if (choice == 1)
+                {
+                    state = "exit";
+                    return "I'm not in a sharing mood";
+                }
+                else
+                {
+                    state = "exit";
+                    return "*Blush*";
+                }
+            case "rejected":
+                movement.SetCurrentDirection(-1*movement.CurrentDirection);
+                return "endDialog()";
+            case "accepted":
                 return "endDialog()";
             default:
                 return "error";
@@ -138,74 +159,149 @@ public class GossipGirlScript : NpcBrain
     {
         switch (state)
         {
-            case "initialState":
+            case "giveDrink":
                 switch (choiceNr)
                 {
                     case 0:
-                        return "Got any gossip?";
+                        if (PlayerController.Instance.ItemCheck("vodka") > 0)
+                        {
+                            return "You can have this vodka";
+                        }
+                        return "";
                     case 1:
-                        return "Can I have a drink?";
+                        if (PlayerController.Instance.ItemCheck("cosmopolitan") > 0)
+                        {
+                            return "You can have a cosmopolitan";
+                        }
+                        return "";
                     case 2:
-                        return "Never mind...";
+                        return "I don't have any to give...";
                     default:
                         return "error";
                 }
-            case "hasSavedVictim":
+            case "gaveVodka":
                 switch (choiceNr)
                 {
                     case 0:
-                        return "Got any gossip?";
+                        return "Oh...";
                     case 1:
-                        return "Can I have a drink?";
+                        return "I do...";
                     case 2:
-                        return "Your friend has been saved!";
+                        return "I'll get you something else";
                     default:
                         return "error";
                 }
-            case "thanks":
+            case "heyGirl":
                 switch (choiceNr)
                 {
                     case 0:
-                        return "You're welcome!";
+                        return "Not really..";
                     case 1:
-                        return "Thank you!";
+                        return "Can you tell me some gossip?";
+                    case 2:
+                        if (isInLove)
+                        {
+                            return "You're pretty too...";
+                        }
+                        return "";
+                    default:
+                        return "error";
+                }
+            case "gaveCosmopolitan":
+                switch (choiceNr)
+                {
+                    case 0:
+                        return "I'm psychic";
+                    case 1:
+                        return "Because I like you..";
+                    case 2:
+                        if (PlayerController.Instance.ItemCheck("cosmopolitan") > 0)
+                        {
+                            return "Want another?";
+                        }
+                        return "";
+                    default:
+                        return "error";
+                }
+            case "goBuyDrink":
+                switch (choiceNr)
+                {
+                    case 0:
+                        return "Ok..";
+                    case 1:
+                        return "I'm not gonna bother";
+                    case 2:
+                        return "Sure!";
+                    default:
+                        return "error";
+                }
+            case "tipsyBoy":
+                switch (choiceNr)
+                {
+                    case 0:
+                        return "Got any juicy gossip?";
+                    case 1:
+                        return "I love you";
+                    case 2:
+                        return "You should sober up!";
+                    default:
+                        return "error";
+                }
+            case "tipsyGirl":
+                switch (choiceNr)
+                {
+                    case 0:
+                        return "Got any juicy gossip?";
+                    case 1:
+                        return "I love you";
+                    case 2:
+                        return "You should sober up!";
+                    default:
+                        return "error";
+                }
+            case "rejected":
+                switch (choiceNr)
+                {
+                    case 0:
+                        return "Ok...";
+                    case 1:
+                        return "But!";
+                    case 2:
+                        return "May I see you again?";
+                    default:
+                        return "error";
+                }
+            case "exit":
+                switch (choiceNr)
+                {
+                    case 0:
+                        return "...";
+                    case 1:
+                        return "";
                     case 2:
                         return "";
                     default:
                         return "error";
                 }
-            case "buyDrink":
+            case "givingGossip":
                 switch (choiceNr)
                 {
                     case 0:
-                        return "I've changed my mind.";
+                        return "Of course!";
                     case 1:
-                        return "I want some vodka (5$)";
+                        return "Can't promise anything";
                     case 2:
-                        return "Give me a cosmopolitan! (10$)";
+                        return "";
                     default:
                         return "error";
                 }
-            case "hasBoughtDrink":
-                state = "buyDrink";
+            case "accepted":
                 switch (choiceNr)
                 {
                     case 0:
-                        return "No, that's all";
+                        return "Let's drink together some time";
                     case 1:
-                        return "I want some vodka (5$)";
-                    case 2:
-                        return "Give me a cosmopolitan! (10$)";
-                    default:
-                        return "error";
-                }
-            case "gossip":
-                switch (choiceNr)
-                {
-                    case 0:
-                        return "Maybe I can help!";
-                    case 1:
-                        return "That's too bad...";
+                        return "I'll see you around";
                     case 2:
                         return "";
                     default:
