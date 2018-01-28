@@ -125,7 +125,8 @@ namespace Transmission
             }
             else if (Input.GetButtonDown("Jump") )
             {
-                var result = Physics2D.BoxCast(currentPosition, Vector2.one, 0f, movementHandler.CurrentDirection, 1f, LayerMask.GetMask("Interactables"));    
+                Debug.Log("Jump" + movementHandler.CurrentDirection);
+                var result = Physics2D.BoxCast(currentPosition, Vector2.one, 0f, movementHandler.CurrentDirection, 3f, LayerMask.GetMask("Interactables"));    
                 if(result)
                 {
                     var isNpc = result.collider.gameObject.GetComponent<NpcBrain>();

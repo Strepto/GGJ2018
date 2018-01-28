@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
 
+using UnityEngine;
 /// <summary>
-/// Singleton only let one instace of Type T per scene.
-/// <para>Note: Singleton instance can be destroyed.</para>
+/// Singleton behaviour class, used for components that should only have one instance
 /// </summary>
-/// <typeparam name="T">T inherits from MonoBehavior</typeparam>
+/// <typeparam name="T"></typeparam>
 public class Singleton<T> : MonoBehaviour where T : Singleton<T>
 {
     private static T instance;
@@ -12,53 +13,41 @@ public class Singleton<T> : MonoBehaviour where T : Singleton<T>
     {
         get
         {
-            if (instance == null)
-                instance = FindObjectOfType<T>();
-            if (instance == null)
-                Debug.LogError("Singleton<" + typeof(T) + "> instance has been not found.");
             return instance;
         }
     }
 
-    protected void Awake()
+    /// <summary>
+    /// Returns whether the instance has been initialized or not.
+    /// </summary>
+    public static bool IsInitialized
     {
-        if (this.GetType() != typeof(T))
-            DestroySelf();
-
-        if (instance == null)
-            instance = this as T;
-        else if (instance != this)
-            DestroySelf();
-    }
-
-    protected void OnValidate()
-    {
-        if (this.GetType() != typeof(T))
+        get
         {
-            Debug.LogError("Singleton<" + typeof(T) + "> has a wrong Type Parameter. " +
-                "Try Singleton<" + this.GetType() + "> instead.");
-#if UNITY_EDITOR
-                        UnityEditor.EditorApplication.delayCall -= DestroySelf;
-                        UnityEditor.EditorApplication.delayCall += DestroySelf;
-#endif
-        }
-
-        if (instance == null)
-            instance = this as T;
-        else if (instance != this)
-        {
-
-            Debug.LogError("Singleton<" + this.GetType() + "> already has an instance on scene. Component will be destroyed." + gameObject.name);
-
+            return instance != null;
         }
     }
 
-
-    private void DestroySelf()
+    /// <summary>
+    /// Base awake method that sets the singleton's unique instance.
+    /// </summary>
+    protected virtual void Awake()
     {
-        if (Application.isPlaying)
-            Destroy(this);
+        if (instance != null)
+        {
+            Debug.LogErrorFormat("Trying to instantiate a second instance of singleton class {0}", GetType().Name);
+        }
         else
-            DestroyImmediate(this);
+        {
+            instance = (T)this;
+        }
+    }
+
+    protected virtual void OnDestroy()
+    {
+        if (instance == this)
+        {
+            instance = null;
+        }
     }
 }
