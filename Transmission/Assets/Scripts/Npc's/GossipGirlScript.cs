@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using Transmission;
 using UnityEngine;
 
-public class BartenderScript : NpcBrain
+public class GossipGirlScript : NpcBrain
 {
-    public PickupItem money;
-    public PickupItem vodka;
-    public PickupItem cosmopolitan;
+    public PickupItem rumor;
 
-    private bool hasGivenQuest = false;
+    private bool hasGivenRumor = false;
+
+    private int drinks = 0;
 
     protected override void Start()
     {
@@ -19,16 +19,28 @@ public class BartenderScript : NpcBrain
 
     public override string getInitialText()
     {
-        if (PlayerController.Instance.ItemCheck("savedVictim") > 0)
+        if (hasGivenRumor)
         {
-            state = "hasSavedVictim";
+            return "*Giggle* It's so funny..";
         }
-        if (hasGivenQuest)
+        if (PlayerController.Instance.CurrentPlayerState == PlayerController.PlayerState.Boy)
         {
-            return "Have you saved him yet?";
+            if (drinks < 1)
+            {
+                return "Hey cutie, are you gonna buy me a drink or what?";
+                state = "";
+            }
+            if (drinks < 3)
+            {
+                return "C'mon, get me one more!";
+            }
+            return "I'm feeling tipsy... *giggle*";
         }
-        hasGivenQuest = true;
-        return "What can I do for you?";
+        if (drinks < 3)
+        {
+            return "Hey girl, anything juicy happening?";
+        }
+        return "I'm feeling tipsy... *giggle*";
     }
 
     public override string getTextAndSendReply(int choice)
@@ -48,7 +60,7 @@ public class BartenderScript : NpcBrain
                 else
                 {
                     state = "gossip";
-                    if (hasGivenQuest)
+                    if (hasGivenRumor)
                     {
                         return "My poor friend...";
                     }
@@ -58,9 +70,6 @@ public class BartenderScript : NpcBrain
                 if (choice == 2)
                 {
                     state = "thanks";
-                    PickupItem newMoney = Instantiate(money);
-                    newMoney.SetAmount(500);
-                    PlayerController.Instance.ItemGiveToPlayer(Instantiate(money));
                     return "Thank you! Take this as a reward!";
                 }
                 if (choice == 1)
@@ -76,7 +85,7 @@ public class BartenderScript : NpcBrain
             case "gossip":
                 if (choice == 0)
                 {
-                    hasGivenQuest = true;
+                    hasGivenRumor = true;
                     return "Thank you! If you can help him, I'll give you a reward!";
                 }
                 else
@@ -93,7 +102,6 @@ public class BartenderScript : NpcBrain
                     if (PlayerController.Instance.ItemCheck("money") >= 5)
                     {
                         PlayerController.Instance.ItemTake("money", 5);
-                        PlayerController.Instance.ItemGiveToPlayer(vodka);
                         state = "hasBoughtDrink";
                         return "Here you go! Anything else?";
                     }
@@ -109,7 +117,6 @@ public class BartenderScript : NpcBrain
                     if (PlayerController.Instance.ItemCheck("money") >= 10)
                     {
                         PlayerController.Instance.ItemTake("money", 10);
-                        PlayerController.Instance.ItemGiveToPlayer(cosmopolitan);
                         state = "hasBoughtDrink";
                         return "Here you go! Anything else?";
                     }

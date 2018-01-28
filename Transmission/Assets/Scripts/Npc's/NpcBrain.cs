@@ -42,6 +42,7 @@ public class NpcBrain : MonoBehaviour {
 
     public void PlayerInitiatedDialog()
     {
+        state = "initialState";
         startsDialog();
     }
 
