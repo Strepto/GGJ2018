@@ -62,7 +62,7 @@ namespace Transmission
                 StopCoroutine(currentCallbackCoroutine);
             }
 
-            currentCallbackCoroutine = StartCoroutine(CallbackCoroutine(callback));
+            currentCallbackCoroutine = StartCoroutine(CallbackCoroutine(callback, faceDirectionWenDone));
         }
 
         public IEnumerator CallbackCoroutine(Action<bool, float> callback, Nullable<Vector2> directionWhenDone = null)
@@ -80,6 +80,7 @@ namespace Transmission
             CurrentMovementState = MovementState.Idle;
             if (directionWhenDone.HasValue)
             {
+                CurrentDirection = directionWhenDone.Value;
                 SetFacingDirection(directionWhenDone.Value, false);
             }
         }
