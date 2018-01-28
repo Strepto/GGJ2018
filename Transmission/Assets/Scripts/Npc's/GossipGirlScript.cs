@@ -65,6 +65,7 @@ public class GossipGirlScript : NpcBrain
                 if (choice == 1)
                 {
                     state = "gaveCosmopolitan";
+                    drinks++;
                     PlayerController.Instance.ItemTake("cosmopolitan");
                     return "How did you know? Cosmopolitans are my favourite!";
                 }
@@ -76,6 +77,12 @@ public class GossipGirlScript : NpcBrain
             case "gaveVodka":
                 return "endDialog()";
             case "gaveCosmopolitan":
+                if (choice == 2)
+                {
+                    PlayerController.Instance.ItemTake("cosmopolitan");
+                    drinks++;
+                    return "Sure!";
+                }
                 return "endDialog()";
             case "goBuyDrink":
                 return "endDialog()";
@@ -116,7 +123,8 @@ public class GossipGirlScript : NpcBrain
                 if (choice == 0)
                 {
                     hasGivenRumor = true;
-                    PlayerController.Instance.ItemGiveToPlayer(rumor);
+                    PlayerController.Instance.ItemGiveToPlayer(Instantiate(rumor));
+                    state = "gaveRumor";
                     return "*Whisper whisper* *Giggle*";
                 }
                 if (choice == 1)
@@ -304,6 +312,19 @@ public class GossipGirlScript : NpcBrain
                         return "Let's drink together some time";
                     case 1:
                         return "I'll see you around";
+                    case 2:
+                        return "";
+                    default:
+                        return "error";
+                }
+            case "gaveRumor":
+                state = "exit";
+                switch (choiceNr)
+                {
+                    case 0:
+                        return "Oh my!";
+                    case 1:
+                        return "";
                     case 2:
                         return "";
                     default:

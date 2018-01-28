@@ -93,7 +93,7 @@ public class BartenderScript : NpcBrain
                     if (PlayerController.Instance.ItemCheck("money") >= 5)
                     {
                         PlayerController.Instance.ItemTake("money", 5);
-                        PlayerController.Instance.ItemGiveToPlayer(vodka);
+                        PlayerController.Instance.ItemGiveToPlayer(Instantiate(vodka));
                         state = "hasBoughtDrink";
                         return "Here you go! Anything else?";
                     }
@@ -109,7 +109,7 @@ public class BartenderScript : NpcBrain
                     if (PlayerController.Instance.ItemCheck("money") >= 10)
                     {
                         PlayerController.Instance.ItemTake("money", 10);
-                        PlayerController.Instance.ItemGiveToPlayer(cosmopolitan);
+                        PlayerController.Instance.ItemGiveToPlayer(Instantiate(cosmopolitan));
                         state = "hasBoughtDrink";
                         return "Here you go! Anything else?";
                     }
