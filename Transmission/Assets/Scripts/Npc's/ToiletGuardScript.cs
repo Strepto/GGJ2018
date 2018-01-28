@@ -17,14 +17,13 @@ public class ToiletGuardScript : NpcBrain {
         ladiesRoomTrigger.onTriggerEnter += ladiesRoomOnEnterTriggered;
         ladiesRoomTrigger.onTriggerExit += ladiesRoomOnExitTriggered;
         speed = 1;
-        MoveToPoint(basePosition);
     }
 
     private void ladiesRoomOnEnterTriggered(Trigger source)
     {
         if (stateNumber != -1)
         {
-            MoveToPoint(blockLadiesRoom);
+            MoveToPoint(blockLadiesRoom, Vector2.left);
             speed = 2;
         }
     }
@@ -33,7 +32,7 @@ public class ToiletGuardScript : NpcBrain {
     {
         if (stateNumber != -1)
         {
-            MoveToPoint(basePosition);
+            MoveToPoint(basePosition, Vector2.left);
             speed = 1;
         }
     }
@@ -49,7 +48,7 @@ public class ToiletGuardScript : NpcBrain {
         else
         {
             stateNumber = -1;
-            MoveToPoint(basePosition);
+            MoveToPoint(basePosition, Vector2.left);
             speed = 1;
             return "You're free to pass, m'lady";
         }

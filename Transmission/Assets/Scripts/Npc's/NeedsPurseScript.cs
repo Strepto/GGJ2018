@@ -48,7 +48,7 @@ public class NeedsPurseScript : NpcBrain
                     return "endDialog()";
                 }
             case 2:
-                MoveToPoint(openPosition);
+                MoveToPoint(openPosition, Vector2.down);
                 return "endDialog()";
             default:
                 return "error";

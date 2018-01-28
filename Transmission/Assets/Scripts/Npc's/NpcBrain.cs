@@ -56,7 +56,20 @@ public class NpcBrain : MonoBehaviour {
         pointsLeft = 0;
     }
 
+    protected void MoveToPoint(Vector2 point, Vector2 endDirection)
+    {
+        movement.MoveToPosition(point, speed, endDirection, callback: HasMovedToPoint);
+        pointsLeft = 0;
+    }
+
     protected void MoveToPoint(Vector2[] points)
+    {
+        pointsLeft = points.Length - 1;
+        pointsToMove = points;
+        movement.MoveToPosition(points[0], speed, callback: HasMovedToPoint);
+    }
+
+    protected void MoveToPoint(Vector2[] points, Vector2 endDirection)
     {
         pointsLeft = points.Length - 1;
         pointsToMove = points;
