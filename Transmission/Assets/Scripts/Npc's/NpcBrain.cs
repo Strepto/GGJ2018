@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class NpcBrain : MonoBehaviour {
     
-    protected int stateNumber;
+    protected string state;
     protected float speed;
 
     protected int pointsLeft = 0;
@@ -19,7 +19,7 @@ public class NpcBrain : MonoBehaviour {
 
     protected virtual void Start()
     {
-        stateNumber = 0;
+        state = "initialState";
         StartCoroutine(IntializeAfterOneFrame());
     }
 
