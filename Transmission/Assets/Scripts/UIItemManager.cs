@@ -18,37 +18,27 @@ public class UIItemManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    int frameInteraval = 30;
+    int frameInteraval = 60;
     void Update()
     {
-        if (Time.frameCount % 30 == 0)
+        if (Time.frameCount % frameInteraval == 0)
         {
             this.transform.DestroyAllChildren();
             foreach(var kvp in PlayerController.Instance.PlayerItems)
             {
-                var itemGo = Instantiate(ItemPrefab, this.transform);
-                var uiItemEntity = itemGo.GetComponent<UIItemEntity>();
                 var firstItem = kvp.Value.First();
-                uiItemEntity.Initialize(firstItem.ItemKey, firstItem.ItemName, firstItem.SpriteRenderer.sprite);
-                var amount = kvp.Value.Sum(x => x.Amount);
-                if(amount > 0)
+                if (firstItem.IsVisibleInInventory)
                 {
-                    uiItemEntity.UpdateCount(amount);
+                    var itemGo = Instantiate(ItemPrefab, this.transform);
+                    var uiItemEntity = itemGo.GetComponent<UIItemEntity>();
+                    uiItemEntity.Initialize(firstItem.ItemKey, firstItem.ItemName, firstItem.SpriteRenderer.sprite);
+                    var amount = kvp.Value.Sum(x => x.Amount);
+                    if (amount > 0)
+                    {
+                        uiItemEntity.UpdateCount(amount);
+                    }
                 }
             }
-
-            
-
-            //foreach (var list in allLists)
-            //{
-            //    list.ForEach(x =>
-            //    {
-            //        if (!allItemsPickedUp.Contains(x))
-            //        {
-            //            allItemsPickedUp.Add(x);
-            //        }
-            //    });
-            //}
         }
     }
 }
