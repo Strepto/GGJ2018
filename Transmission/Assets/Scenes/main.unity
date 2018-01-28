@@ -2276,7 +2276,7 @@ Prefab:
     - target: {fileID: 224610614686784336, guid: 9fe5d09989c5faa4d83e2136f04bc702,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -24.070007
       objectReference: {fileID: 0}
     - target: {fileID: 224610614686784336, guid: 9fe5d09989c5faa4d83e2136f04bc702,
         type: 2}
@@ -2286,7 +2286,7 @@ Prefab:
     - target: {fileID: 224610614686784336, guid: 9fe5d09989c5faa4d83e2136f04bc702,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 224610614686784336, guid: 9fe5d09989c5faa4d83e2136f04bc702,
         type: 2}
@@ -2336,7 +2336,7 @@ Prefab:
     - target: {fileID: 224981040260017270, guid: 9fe5d09989c5faa4d83e2136f04bc702,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -8.1215
       objectReference: {fileID: 0}
     - target: {fileID: 224981040260017270, guid: 9fe5d09989c5faa4d83e2136f04bc702,
         type: 2}
@@ -2346,7 +2346,7 @@ Prefab:
     - target: {fileID: 224981040260017270, guid: 9fe5d09989c5faa4d83e2136f04bc702,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9fe5d09989c5faa4d83e2136f04bc702, type: 2}
@@ -19362,12 +19362,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!114 &836339107 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114758963197628304, guid: a3db3a58dbdcbbc47b51d1ff9b53ab72,
-    type: 2}
-  m_PrefabInternal: {fileID: 1717861744}
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &868001727
 GameObject:
   m_ObjectHideFlags: 0
@@ -21986,7 +21980,7 @@ MonoBehaviour:
   textPanel: {fileID: 368218755}
   npcName: {fileID: 699869227}
   npcDescription: {fileID: 681422864}
-  npcPortraitImage: {fileID: 836339107}
+  npcPortraitImage: {fileID: 1717861745}
   firstChoiceText: {fileID: 394546593}
   secondChoiceText: {fileID: 1609951099}
   thirdChoiceText: {fileID: 679315842}
@@ -24832,7 +24826,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1595402846}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.07, y: 0.45, z: 0}
+  m_LocalPosition: {x: -8.58, y: 2.41, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1827697717}
@@ -25909,6 +25903,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a3db3a58dbdcbbc47b51d1ff9b53ab72, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1717861745 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114988951846157564, guid: a3db3a58dbdcbbc47b51d1ff9b53ab72,
+    type: 2}
+  m_PrefabInternal: {fileID: 1717861744}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1729314215
 GameObject:
   m_ObjectHideFlags: 0

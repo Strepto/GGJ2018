@@ -65,7 +65,7 @@ public class GossipGirlScript : NpcBrain
                 if (choice == 1)
                 {
                     state = "gaveCosmopolitan";
-                    PlayerController.Instance.ItemTake("cosmopolitan", 1);
+                    PlayerController.Instance.ItemTake("cosmopolitan");
                     return "How did you know? Cosmopolitans are my favourite!";
                 }
                 else
@@ -149,6 +149,8 @@ public class GossipGirlScript : NpcBrain
                 movement.SetCurrentDirection(-1*movement.CurrentDirection);
                 return "endDialog()";
             case "accepted":
+                return "endDialog()";
+            case "exit":
                 return "endDialog()";
             default:
                 return "error";
