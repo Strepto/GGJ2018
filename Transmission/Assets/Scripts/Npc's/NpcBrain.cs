@@ -8,6 +8,9 @@ public class NpcBrain : MonoBehaviour {
     protected int stateNumber;
     protected float speed;
 
+    protected int pointsLeft = 0;
+    protected Vector2[] pointsToMove;
+
     public MovementHandler movement;
     public DialogHandler dialog;
 
@@ -41,16 +44,24 @@ public class NpcBrain : MonoBehaviour {
     protected void MoveToPoint(Vector2 point)
     {
         movement.MoveToPosition(point, speed, callback: HasMovedToPoint);
+        pointsLeft = 0;
+    }
+
+    protected void MoveToPoint(Vector2[] points)
+    {
+        pointsLeft = points.Length - 1;
+        pointsToMove = points;
+        movement.MoveToPosition(points[0], speed, callback: HasMovedToPoint);
     }
 
     protected void HasMovedToPoint(bool interrupted, float timeUsed)
     {
-
+        if (pointsLeft > 0)
+        {
+            movement.MoveToPosition(pointsToMove[pointsToMove.Length - pointsLeft], speed, callback: HasMovedToPoint);
+            pointsLeft--;
+        }
     }
-
-
-    
-
 
 
     public virtual string getInitialText()

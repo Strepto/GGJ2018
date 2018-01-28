@@ -24,7 +24,6 @@ public class ToiletGuardScript : NpcBrain {
     {
         if (stateNumber != -1)
         {
-            Debug.Log("adf");
             MoveToPoint(blockLadiesRoom);
             speed = 2;
         }

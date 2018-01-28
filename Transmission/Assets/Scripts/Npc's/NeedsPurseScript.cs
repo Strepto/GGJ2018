@@ -6,7 +6,7 @@ using UnityEngine;
 public class NeedsPurseScript : NpcBrain
 {
     public Vector2 basePosition;
-    public Vector2 openPosition;
+    public Vector2[] openPosition;
 
     protected override void Start()
     {
@@ -30,8 +30,15 @@ public class NeedsPurseScript : NpcBrain
             case 0:
                 return "endDialog()";
             case 1:
-                stateNumber = 2;
-                return "Thank you!";
+                if (choice == 2)
+                {
+                    stateNumber = 2;
+                    return "Thank you!";
+                }
+                else
+                {
+                    return "endDialog()";
+                }
             case 2:
                 MoveToPoint(openPosition);
                 return "endDialog()";
