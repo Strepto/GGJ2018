@@ -8,6 +8,8 @@ public class NeedsPurseScript : NpcBrain
     public Vector2 basePosition;
     public Vector2[] openPosition;
 
+    private bool hasGivenQuest = false;
+
     protected override void Start()
     {
         base.Start();
@@ -20,7 +22,12 @@ public class NeedsPurseScript : NpcBrain
         {
             stateNumber = 1;
         }
-        return "Have you seen my purse?";
+        if (hasGivenQuest)
+        {
+            return "Did you find it?";
+        }
+        hasGivenQuest = true;
+        return "I lost my purse in the ladies room, but the guard won't let me enter to fetch it. Can you help me please?";
     }
 
     public override string getTextAndSendReply(int choice)
@@ -56,7 +63,7 @@ public class NeedsPurseScript : NpcBrain
                 switch (choiceNr)
                 {
                     case 0:
-                        return "I haven't...";
+                        return "Sure thing!";
                     case 1:
                         return "Why should I care?";
                     case 2:
