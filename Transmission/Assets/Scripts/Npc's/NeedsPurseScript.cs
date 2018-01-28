@@ -8,6 +8,8 @@ public class NeedsPurseScript : NpcBrain
     public Vector2 basePosition;
     public Vector2[] openPosition;
 
+    public PickupItem money;
+
     private bool hasGivenQuest = false;
 
     protected override void Start()
@@ -41,7 +43,8 @@ public class NeedsPurseScript : NpcBrain
                 {
                     stateNumber = 2;
                     PlayerController.Instance.ItemTake("purse");
-                    return "Thank you!";
+                    PlayerController.Instance.ItemGiveToPlayer(Instantiate(money));
+                    return "Thank you! Take this as a reward!";
                 }
                 else
                 {
