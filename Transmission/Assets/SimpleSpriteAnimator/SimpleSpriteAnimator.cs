@@ -94,9 +94,6 @@ namespace SeedValue
 		}
 
 
-
-
-
 		private IEnumerator ScanChildsAnimations ()
 		{
 			m_AllAnimList = new List<SimpleSpriteOneAnimation> ();
@@ -130,11 +127,6 @@ namespace SeedValue
 
 			yield return null;
 		}
-
-
-	
-
-
 
 
 		private void HideAllAnimations ()

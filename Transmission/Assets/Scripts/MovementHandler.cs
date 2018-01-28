@@ -45,7 +45,7 @@ namespace Transmission
             this.playerController = GetComponent<PlayerController>();
         }
 
-        public void MoveToPosition(Vector2 targetPos, float speed = 2.0f, bool collide = true, Action<bool, float> callback = null)
+        public void MoveToPosition(Vector2 targetPos, float speed = 2.0f, Nullable<Vector2> faceDirectionWenDone = null, bool collide = true, Action<bool, float> callback = null)
         {
             CurrentMovementState = CurrentMovementState = MovementState.Moving;
             CurrentTarget = targetPos;
@@ -65,7 +65,7 @@ namespace Transmission
             currentCallbackCoroutine = StartCoroutine(CallbackCoroutine(callback));
         }
 
-        public IEnumerator CallbackCoroutine(Action<bool, float> callback)
+        public IEnumerator CallbackCoroutine(Action<bool, float> callback, Nullable<Vector2> directionWhenDone = null)
         {
             while (!hasFinishedMoving)
             {
@@ -76,7 +76,12 @@ namespace Transmission
                 bool status = CurrentMovementState == MovementState.Stopped;
                 callback(status, Time.deltaTime - timeStartedMoving);
             }
+            
             CurrentMovementState = MovementState.Idle;
+            if (directionWhenDone.HasValue)
+            {
+                SetFacingDirection(directionWhenDone.Value, false);
+            }
         }
 
         public void Stop()
@@ -95,13 +100,18 @@ namespace Transmission
             if (!hasFinishedMoving && Vector3.Distance(transform.position, CurrentTarget) > 0.1f)
             {
                 this.transform.position = Vector3.MoveTowards(transform.position, CurrentTarget, 0.05f * moveSpeed);
+                AnimateMovement(position);
             }
             else if (!hasFinishedMoving)
             {
+                AnimateMovement(position);
                 hasFinishedMoving = true;
             }
+            else
+            {
+                SetFacingDirection(CurrentDirection, false);
+            }
 
-            AnimateMovement(position);
         }
 
         private Vector2 GetDirectionSimple(Vector2 from, Vector2 to)
@@ -151,12 +161,18 @@ namespace Transmission
             }
             else
             {
-                SetFacingDirection(CurrentDirection, false); 
+                SetFacingDirection(moveDirection, false); 
             }
         }
 
+        public void SetCurrentDirection(Vector2 direction)
+        {
+            CurrentDirection = direction;
+            SetFacingDirection(CurrentDirection, false);
+        }
 
-        public void SetFacingDirection(Vector2 direction, bool isMoving)
+
+        private void SetFacingDirection(Vector2 direction, bool isMoving)
         {
 
             string animExtension = string.Empty;
@@ -187,7 +203,7 @@ namespace Transmission
                     CurrentDirection = Vector2.up;
                     spriteAnimator.PlayAnimation("WalkUp" + animExtension, !isMoving);
                 }
-                else if (direction.y < JoystickMovementThreshold)
+                else if (direction.y < -JoystickMovementThreshold)
                 {
                     CurrentDirection = Vector2.down;
                     spriteAnimator.PlayAnimation("WalkDown" + animExtension, !isMoving);

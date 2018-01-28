@@ -74,6 +74,11 @@ namespace Transmission
             return true;
         }
 
+        public void ItemGiveToPlayer(PickupItem item)
+        {
+            ReceiveItem(item);
+        }
+
 
         void Update()
         {
@@ -121,28 +126,33 @@ namespace Transmission
                 if(result)
                 {
                     var isNpc = result.collider.gameObject.GetComponent<NpcBrain>();
-                    if(isNpc != null)
+                    if (isNpc != null)
                     {
                         isNpc.PlayerInitiatedDialog();
                     }
 
                     var isPickupItem = result.collider.gameObject.GetComponent<PickupItem>();
-                    if (isPickupItem != null)
-                    {
-                        isPickupItem.PrepareForPickup();
-                        string itemKey = isPickupItem.ItemKey;
-
-                        List<PickupItem> list;
-                        if (!PlayerItems.TryGetValue(itemKey, out list))
-                        {
-                            list = new List<PickupItem>();
-                            PlayerItems[isPickupItem.ItemKey] = list;
-                        }
-                        PlayerItems[isPickupItem.ItemKey].Add(isPickupItem);
-                    }
+                    ReceiveItem(isPickupItem);
                 }
             }
             
+        }
+
+        private void ReceiveItem(PickupItem isPickupItem)
+        {
+            if (isPickupItem != null)
+            {
+                isPickupItem.PrepareForPickup();
+                string itemKey = isPickupItem.ItemKey;
+
+                List<PickupItem> list;
+                if (!PlayerItems.TryGetValue(itemKey, out list))
+                {
+                    list = new List<PickupItem>();
+                    PlayerItems[isPickupItem.ItemKey] = list;
+                }
+                PlayerItems[isPickupItem.ItemKey].Add(isPickupItem);
+            }
         }
     }
 
