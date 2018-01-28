@@ -87,7 +87,7 @@ namespace SeedValue
 			//_isIncreasePingPong = true;
 
 			//ShowFrame (m_CurrentFrame);
-			m_isNowPlaying = true;
+			m_isNowPlaying = false;
 			m_IsPaused = true;
 
 			//transform.gameObject.SetActive (!_isNeedHide);

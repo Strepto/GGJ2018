@@ -60,9 +60,9 @@ namespace SeedValue
 			if (m_AllAnimations.ContainsKey (_name)) {
                 var targetAnim = m_AllAnimations[_name];
 
-                if (m_CurrentPlaing == targetAnim && !freeze)
+                if (m_CurrentPlaing == targetAnim && targetAnim.m_IsPaused == freeze)
                 {
-                    
+
                     //same animation
                     return;
                 }
@@ -70,13 +70,14 @@ namespace SeedValue
 
                 //HideAllAnimations ();
                 targetAnim.gameObject.SetActive (true);
-                if (!freeze)
+
+                if (freeze)
                 {
-                    targetAnim.Play();
+                    targetAnim.Pause();
                 }
                 else
                 {
-                    targetAnim.Pause();
+                    targetAnim.Play();
                 }
 
 
