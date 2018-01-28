@@ -14,7 +14,7 @@ namespace Transmission
         public InteractionZoneController interactionZoneController;
 
         public Dictionary<string, List<PickupItem>> PlayerItems = new Dictionary<string, List<PickupItem>>();
-        
+        public MusicManager musicManager;
 
         public enum PlayerState
         {
@@ -32,6 +32,7 @@ namespace Transmission
         {
             spriteAnimator = GetComponent<SimpleSpriteAnimator>();
             movementHandler = GetComponent<MovementHandler>();
+            musicManager.SwitchGenderSounds(CurrentPlayerState);
         }
         
         public int ItemCheck(string itemKey)
@@ -119,6 +120,8 @@ namespace Transmission
                     CurrentPlayerState = PlayerState.Boy;
                     spriteAnimator.PlayAnimation("SwitchGirlBoy");
                 }
+
+                musicManager.SwitchGenderSounds(CurrentPlayerState);
             }
             else if (Input.GetButtonDown("Jump") )
             {

@@ -47,7 +47,8 @@ public class Singleton<T> : MonoBehaviour where T : Singleton<T>
             instance = this as T;
         else if (instance != this)
         {
-            Debug.LogError("Singleton<" + this.GetType() + "> already has an instance on scene. Component will be destroyed.");
+
+            Debug.LogError("Singleton<" + this.GetType() + "> already has an instance on scene. Component will be destroyed." + gameObject.name);
 #if !UNITY_EDITOR
             UnityEditor.EditorApplication.delayCall -= DestroySelf;
             UnityEditor.EditorApplication.delayCall += DestroySelf;
