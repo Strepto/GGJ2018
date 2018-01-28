@@ -11,6 +11,8 @@ public class NpcBrain : MonoBehaviour {
     protected int pointsLeft = 0;
     protected Vector2[] pointsToMove;
 
+    public Vector2 InitialFacingDirection;
+
     public MovementHandler movement;
     public DialogHandler dialog;
 
@@ -18,6 +20,13 @@ public class NpcBrain : MonoBehaviour {
     protected virtual void Start()
     {
         stateNumber = 0;
+        StartCoroutine(IntializeAfterOneFrame());
+    }
+
+    protected IEnumerator IntializeAfterOneFrame()
+    {
+        yield return null;
+        movement.SetCurrentDirection(InitialFacingDirection);
     }
 
     protected virtual void Update()
