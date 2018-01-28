@@ -17,6 +17,11 @@ public class DialogWindow : Singleton<DialogWindow> {
     public GameObject playerTextPrefab;
     public GameObject textPanel;
 
+    public Text npcName;
+    public Text npcDescription;
+    public Image npcPortraitImage;
+
+
     public Text firstChoiceText;
     public Text secondChoiceText;
     public Text thirdChoiceText;
@@ -30,6 +35,7 @@ public class DialogWindow : Singleton<DialogWindow> {
     public void startDialog(DialogHandler handler, string initialText)
     {
         currentHandler = handler;
+
         ActiveDialog = true;
         if (!hasStartedDialog)
         {
@@ -40,6 +46,12 @@ public class DialogWindow : Singleton<DialogWindow> {
 
     private void initiateDialog(string text)
     {
+
+        npcName.text = currentHandler.GetNpcName();
+        npcDescription.text = currentHandler.GetNpcDescription();
+        npcPortraitImage.sprite = currentHandler.GetNpcPortrait();
+
+
         if (PlayerController.Instance.CurrentPlayerState == PlayerController.PlayerState.Boy)
         {
             playerImage.sprite = playerPortraits[0];

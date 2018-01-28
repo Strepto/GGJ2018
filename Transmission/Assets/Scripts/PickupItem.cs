@@ -11,7 +11,7 @@ public class PickupItem : MonoBehaviour {
 
     public bool IsVisibleInInventory = true;
     
-
+        
     [SerializeField]
     private int _amount = 1;
     public int Amount
@@ -22,6 +22,10 @@ public class PickupItem : MonoBehaviour {
         }
     }
 
+    public void SetAmount(int amount)
+    {
+        _amount = amount;
+    }
 
     public AudioClip audioClip;
 
@@ -42,6 +46,7 @@ public class PickupItem : MonoBehaviour {
 
         gameObject.SetActive(false);
     }
+
 
 
     public int RemoveAmount(int max)

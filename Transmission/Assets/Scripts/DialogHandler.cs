@@ -18,6 +18,20 @@ public class DialogHandler : MonoBehaviour {
 		
 	}
 
+    public string GetNpcName()
+    {
+        return brain.Name;
+    }
+
+    public string GetNpcDescription()
+    {
+        return brain.Description;
+    }
+
+    public Sprite GetNpcPortrait()
+    {
+        return brain.PortaitImage;
+    }
     public void startDialog()
     {
         dialogPanel.SetActive(true);

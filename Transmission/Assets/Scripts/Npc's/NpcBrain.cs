@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class NpcBrain : MonoBehaviour {
     
+
     protected int stateNumber;
     protected float speed;
 
@@ -16,6 +17,10 @@ public class NpcBrain : MonoBehaviour {
     public MovementHandler movement;
     public DialogHandler dialog;
 
+    public Sprite PortaitImage;
+    public string Name;
+    [TextArea]
+    public string Description;
 
     protected virtual void Start()
     {

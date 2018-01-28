@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts.Helpers;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Transmission;
@@ -10,12 +9,7 @@ public class UIItemManager : MonoBehaviour
 
     public GameObject ItemPrefab;
     public List<PickupItem> allItemsPickedUp = new List<PickupItem>();
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
+    
 
     // Update is called once per frame
     int frameInteraval = 60;
