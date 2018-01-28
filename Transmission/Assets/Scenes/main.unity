@@ -2276,7 +2276,7 @@ Prefab:
     - target: {fileID: 224610614686784336, guid: 9fe5d09989c5faa4d83e2136f04bc702,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -22.070007
       objectReference: {fileID: 0}
     - target: {fileID: 224610614686784336, guid: 9fe5d09989c5faa4d83e2136f04bc702,
         type: 2}
@@ -2286,7 +2286,7 @@ Prefab:
     - target: {fileID: 224610614686784336, guid: 9fe5d09989c5faa4d83e2136f04bc702,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 224610614686784336, guid: 9fe5d09989c5faa4d83e2136f04bc702,
         type: 2}
@@ -2336,7 +2336,7 @@ Prefab:
     - target: {fileID: 224981040260017270, guid: 9fe5d09989c5faa4d83e2136f04bc702,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -8.1215
       objectReference: {fileID: 0}
     - target: {fileID: 224981040260017270, guid: 9fe5d09989c5faa4d83e2136f04bc702,
         type: 2}
@@ -2346,7 +2346,7 @@ Prefab:
     - target: {fileID: 224981040260017270, guid: 9fe5d09989c5faa4d83e2136f04bc702,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9fe5d09989c5faa4d83e2136f04bc702, type: 2}
@@ -2360,15 +2360,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4579214699694900, guid: b1cfce676d1d58b41943e45de3d9ef51, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 6.4097857
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4579214699694900, guid: b1cfce676d1d58b41943e45de3d9ef51, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.6901271
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4579214699694900, guid: b1cfce676d1d58b41943e45de3d9ef51, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0.9433594
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4579214699694900, guid: b1cfce676d1d58b41943e45de3d9ef51, type: 2}
       propertyPath: m_LocalRotation.x
@@ -26477,7 +26477,7 @@ GameObject:
   - component: {fileID: 1761209097}
   - component: {fileID: 1761209099}
   - component: {fileID: 1761209098}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: LadiesRoomTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
