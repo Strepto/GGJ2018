@@ -2276,7 +2276,7 @@ Prefab:
     - target: {fileID: 224610614686784336, guid: 9fe5d09989c5faa4d83e2136f04bc702,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -24.070007
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224610614686784336, guid: 9fe5d09989c5faa4d83e2136f04bc702,
         type: 2}
@@ -2286,7 +2286,7 @@ Prefab:
     - target: {fileID: 224610614686784336, guid: 9fe5d09989c5faa4d83e2136f04bc702,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 35
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224610614686784336, guid: 9fe5d09989c5faa4d83e2136f04bc702,
         type: 2}
@@ -2336,7 +2336,7 @@ Prefab:
     - target: {fileID: 224981040260017270, guid: 9fe5d09989c5faa4d83e2136f04bc702,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -8.1215
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224981040260017270, guid: 9fe5d09989c5faa4d83e2136f04bc702,
         type: 2}
@@ -2346,7 +2346,7 @@ Prefab:
     - target: {fileID: 224981040260017270, guid: 9fe5d09989c5faa4d83e2136f04bc702,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 16
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9fe5d09989c5faa4d83e2136f04bc702, type: 2}
@@ -24777,8 +24777,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4057723a4648040c2bbcb3031da32525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PlayOnStartAnimation: 0
-  m_OnStartAnimationName: WalkUp
+  m_PlayOnStartAnimation: 1
+  m_OnStartAnimationName: Idle
   m_IsdelayedStart: 0
   m_IsdelayedTimeFrom: 0
   m_IsdelayedTimeTo: 0
