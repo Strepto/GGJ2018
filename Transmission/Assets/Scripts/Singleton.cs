@@ -49,10 +49,7 @@ public class Singleton<T> : MonoBehaviour where T : Singleton<T>
         {
 
             Debug.LogError("Singleton<" + this.GetType() + "> already has an instance on scene. Component will be destroyed." + gameObject.name);
-#if !UNITY_EDITOR
-            UnityEditor.EditorApplication.delayCall -= DestroySelf;
-            UnityEditor.EditorApplication.delayCall += DestroySelf;
-#endif
+
         }
     }
 
