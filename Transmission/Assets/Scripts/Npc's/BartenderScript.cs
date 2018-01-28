@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class BartenderScript : NpcBrain
 {
-    public Vector2 basePosition;
-    public Vector2[] openPosition;
-
     public PickupItem money;
 
     private bool hasGivenQuest = false;
@@ -20,16 +17,16 @@ public class BartenderScript : NpcBrain
 
     public override string getInitialText()
     {
-        if (PlayerController.Instance.ItemCheck("purse") > 0)
+        if (PlayerController.Instance.ItemCheck("savedVictim") > 0)
         {
-            state = "hasPurse";
+            state = "hasSavedVictim";
         }
         if (hasGivenQuest)
         {
-            return "Did you find it?";
+            return "Have you saved him yet?";
         }
         hasGivenQuest = true;
-        return "I lost my purse in the ladies room, but the guard won't let me enter to fetch it. Can you help me please?";
+        return "A friend of mine is being bullied, can you save him for me?";
     }
 
     public override string getTextAndSendReply(int choice)
@@ -42,7 +39,8 @@ public class BartenderScript : NpcBrain
                 if (choice == 2)
                 {
                     state = "thanks";
-                    PlayerController.Instance.ItemTake("purse");
+                    PickupItem newMoney = Instantiate(money);
+                    //newMoney.Amount = 500;
                     PlayerController.Instance.ItemGiveToPlayer(Instantiate(money));
                     return "Thank you! Take this as a reward!";
                 }
@@ -51,7 +49,6 @@ public class BartenderScript : NpcBrain
                     return "endDialog()";
                 }
             case "thanks":
-                MoveToPoint(openPosition, Vector2.down);
                 return "endDialog()";
             default:
                 return "error";
