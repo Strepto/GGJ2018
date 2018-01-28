@@ -33,6 +33,7 @@ public class NeedsPurseScript : NpcBrain
                 if (choice == 2)
                 {
                     stateNumber = 2;
+                    PlayerController.Instance.ItemTake("purse");
                     return "Thank you!";
                 }
                 else
